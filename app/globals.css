@@ -122,3 +122,18 @@ html{scroll-behavior:smooth}
 @media(max-width:900px){#services .solar-art{right:2%;top:52px;width:190px;height:190px;opacity:.48}#services .solar-orbit-c{width:184px;height:126px}#services .solar-orbit-b{width:142px;height:96px}#services .solar-orbit-a{width:90px;height:60px}}
 @media(max-width:520px){#services .solar-art{top:64px;right:-24px;width:150px;height:150px;opacity:.25}#services .solar-orbit-c{width:146px;height:98px}#services .solar-orbit-b{width:112px;height:76px}#services .solar-orbit-a{width:70px;height:48px}#services .solar-core{width:34px;height:34px}}
 @media(prefers-reduced-motion:reduce){#services .solar-orbit-a,#services .solar-orbit-b,#services .solar-orbit-c,#services .solar-core,#services .solar-glint{animation:none!important}}
+
+
+/* Friendly floating intro bubble in the hero */
+.intro-bubble{position:relative;isolation:isolate;display:inline-flex;align-items:center;gap:10px;margin:0 0 26px 0;padding:13px 22px 13px 15px;border:1px solid #8ef4ba70;border-radius:999px;background:linear-gradient(135deg,#10251aee,#0a120de8);color:#eaf8ef;font:600 17px/1.2 Manrope,sans-serif;box-shadow:0 0 0 5px #4be39a08,0 8px 28px #4be39a12;animation:intro-bubble-float 4s ease-in-out infinite;transform-origin:center}
+.intro-bubble:before{content:"";position:absolute;inset:-5px;border:1px solid #8ef4ba24;border-radius:inherit;z-index:-1;animation:intro-bubble-halo 3.2s ease-in-out infinite}
+.intro-bubble:after{content:"";position:absolute;left:32px;bottom:-7px;width:13px;height:13px;background:#0d1a12;border-right:1px solid #8ef4ba70;border-bottom:1px solid #8ef4ba70;transform:rotate(45deg);border-bottom-right-radius:3px}
+.intro-bubble .intro-wave{display:inline-grid;place-items:center;width:31px;height:31px;border-radius:50%;background:#8ef4ba15;font-size:19px;animation:intro-wave-wiggle 2.6s ease-in-out infinite}
+.intro-bubble b{color:#8ef4ba}
+.intro-bubble i{position:absolute;right:18px;top:10px;width:5px;height:5px;border-radius:50%;background:#8ef4ba;box-shadow:0 0 12px #8ef4ba;animation:intro-dot-pulse 2s ease-in-out infinite}
+@keyframes intro-bubble-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes intro-bubble-halo{0%,100%{opacity:.35;transform:scale(1)}50%{opacity:.9;transform:scale(1.025)}}
+@keyframes intro-wave-wiggle{0%,75%,100%{transform:rotate(0)}80%{transform:rotate(18deg)}86%{transform:rotate(-12deg)}92%{transform:rotate(10deg)}}
+@keyframes intro-dot-pulse{0%,100%{opacity:.45;scale:.8}50%{opacity:1;scale:1.35}}
+@media(max-width:600px){.intro-bubble{font-size:15px;padding:11px 19px 11px 12px;margin-bottom:21px}.intro-bubble .intro-wave{width:28px;height:28px}}
+@media(prefers-reduced-motion:reduce){.intro-bubble,.intro-bubble:before,.intro-bubble .intro-wave,.intro-bubble i{animation:none!important}}
