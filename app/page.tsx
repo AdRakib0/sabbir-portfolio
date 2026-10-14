@@ -6,31 +6,6 @@ const recommendations = [
   { name: "Sadab Sharif", role: "Marketing Executive at Australian Polytechnic College", date: "7 July 2026", text: "Md Rakibul Islam Sabbir is an exceptionally dedicated and skilled marketing professional. Working with him at Australian Polytechnic, I witnessed firsthand his ability to drive campaigns forward and deliver excellent results. He is strategic, creative, and a great collaborator. I highly recommend him for any future marketing opportunities!" }
 ];
 export default function Home(){
-const [sending, setSending] = useState(false);
-const [formStatus, setFormStatus] = useState("");
-async function handleContactSubmit(e: FormEvent<HTMLFormElement>) {
-  e.preventDefault();
-  if (sending) return;
-  setSending(true);
-  setFormStatus("");
-  const form = e.currentTarget;
-  const values = new FormData(form);
-  try {
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: values.get("name"), email: values.get("email"), topic: values.get("topic"), message: values.get("message") }),
-    });
-    const result = await response.json();
-    if (!response.ok) throw new Error(result.error || "Your message could not be sent.");
-    form.reset();
-    setFormStatus("Thanks — your message has been sent successfully.");
-  } catch (error) {
-    setFormStatus(error instanceof Error ? error.message : "Something went wrong. Please try again.");
-  } finally {
-    setSending(false);
-  }
-}
 return <main className="wrap" id="home">
 <header className="nav"><a className="brand-lockup" href="#home"><span className="brand">S<span>.</span></span><span className="brand-copy"><b>RAKIBUL ISLAM SABBIR</b><small>MARKETING · TECHNOLOGY · GROWTH</small></span></a><nav className="links"><a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#work">Projects</a><a href="#services">Services</a><a href="#recommendations">Recommendations</a><a href="#contact">Contact</a></nav><a className="nav-cta" href="#contact">Let’s connect ↗</a></header>
 <section className="hero"><div><div className="intro-bubble" aria-label="Hi, I’m Sabbir"><span className="intro-wave">👋</span><span>Hi, I’m <b>Sabbir</b></span><i/></div><div className="eyebrow"><i/> OPEN TO MEANINGFUL OPPORTUNITIES</div><h1>Building ideas<br/>into <span className="green">real impact.</span></h1><p className="lead">{site.intro}</p><div className="actions"><a className="btn primary" href="#work">Explore my work ↗</a><a className="btn" href="#contact">Let’s connect →</a></div><div className="hero-caption"><span className="avatar-mark">RS</span><span><b>Marketing &amp; digital projects</b><small>Sydney, Australia · Working across ideas and execution</small></span></div></div><div className="hero-art"><div className="orbit orbit-one"/><div className="orbit orbit-two"/><div className="orbit orbit-three"/><div className="monogram">RS<small>IDEAS → IMPACT</small></div><div className="float-card card-strategy"><b>▣ &nbsp; Strategy first</b><small>Clear goals, useful work</small></div><div className="float-card card-tech"><b>⌘ &nbsp; Tech minded</b><small>Curious by design</small></div><div className="float-card card-learning"><b>▥ &nbsp; Always learning</b><small>Better, every iteration</small></div><small className="art-note">A LITTLE STRATEGY. A LOT OF CURIOSITY.</small></div><a className="scroll-note" href="#about">SCROLL TO EXPLORE ↓</a></section>
