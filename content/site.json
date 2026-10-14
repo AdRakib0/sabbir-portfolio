@@ -1,0 +1,14 @@
+{
+  "name": "Md Rakibul Islam Sabbir",
+  "headline": "Marketing, technology & career pathways.",
+  "intro": "I build meaningful connections between education, technology and opportunity.",
+  "about": "Marketing professional and IT student based in Sydney, Australia.",
+  "email": "adrakib0@gmail.com",
+  "location": "Sydney, Australia",
+  "socials": [{"label":"LinkedIn","url":"https://www.linkedin.com/in/islamsabbir/"},{"label":"GitHub","url":"https://github.com/AdRakib0"}],
+  "experience": [{"role":"Marketing Executive","company":"Australian Polytechnic College","period":"2026 — Present","description":"Agent engagement, student recruitment campaigns and education marketing resources."}],
+  "projects": [{"title":"Trade & Career Pathway Guide","category":"Education marketing","description":"A practical guide connecting Australian trade qualifications with career pathways.","url":""}],
+  "services": [{"title":"Education marketing","description":"Student campaigns, agent engagement and education marketing collateral."}],
+  "recommendations": [],
+  "blog": []
+}
