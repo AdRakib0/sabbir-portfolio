@@ -97,3 +97,28 @@ html{scroll-behavior:smooth}
 @media(max-width:900px){.expertise-services{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){.expertise-services{grid-template-columns:1fr;gap:11px}.expertise-services .expertise-card{min-height:118px;padding:19px}.expertise-services .expertise-card>span{right:18px;bottom:17px}}
 @media(prefers-reduced-motion:reduce){.expertise-services .expertise-card,.expertise-services .expertise-card:before,.expertise-services .expertise-card:after,.expertise-services .expertise-card h3,.expertise-services .expertise-card>span{animation:none!important;transition:none!important}.expertise-services .expertise-card:nth-child(4n+2){transform:none}}
+
+
+/* Animated orbital / planet graphic for the What I Bring section */
+#services{position:relative;isolation:isolate;overflow:hidden}
+#services>.kicker,#services>.section-heading,#services>.services{position:relative;z-index:1}
+#services .solar-art{position:absolute;z-index:0;top:34px;right:6%;width:250px;height:250px;pointer-events:none;opacity:.8;filter:drop-shadow(0 0 28px #4be39a0b)}
+#services .solar-core{position:absolute;left:50%;top:50%;width:48px;height:48px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle at 32% 28%,#d0ffe1 0%,#8ef4ba 16%,#2b9f67 48%,#103e28 76%);box-shadow:0 0 22px #4be39a45,0 0 55px #4be39a16;animation:solar-breathe 4s ease-in-out infinite}
+#services .solar-core:after{content:"";position:absolute;inset:8px -5px;border:1px solid #c2ffdc66;border-radius:50%;transform:rotate(-28deg)}
+#services .solar-core i{position:absolute;width:7px;height:7px;left:9px;top:9px;border-radius:50%;background:#e1ffeb;filter:blur(.3px)}
+#services .solar-orbit{position:absolute;left:50%;top:50%;display:block;border:1px solid #8ef4ba36;border-radius:50%;transform:translate(-50%,-50%) rotate(-28deg)}
+#services .solar-orbit-a{width:112px;height:72px;animation:solar-spin-a 9s linear infinite}
+#services .solar-orbit-b{width:178px;height:118px;transform:translate(-50%,-50%) rotate(38deg);border-color:#8ef4ba2c;animation:solar-spin-b 15s linear infinite}
+#services .solar-orbit-c{width:238px;height:158px;transform:translate(-50%,-50%) rotate(-52deg);border-style:dashed;border-color:#8ef4ba22;animation:solar-spin-c 24s linear infinite}
+#services .solar-orbit i{position:absolute;left:50%;top:-4px;width:8px;height:8px;border-radius:50%;background:#a5f8c5;box-shadow:0 0 12px #4be39a90}
+#services .solar-orbit-b i{top:auto;left:auto;right:20%;bottom:-4px;width:5px;height:5px;background:#d4ffe3}
+#services .solar-orbit-c i{top:50%;left:-3px;width:6px;height:6px;background:#43d98b}
+#services .solar-glint{position:absolute;left:50%;top:50%;width:4px;height:4px;background:#e5fff0;border-radius:50%;box-shadow:0 0 16px 5px #4be39a55;animation:solar-glint 3s ease-in-out infinite}
+@keyframes solar-spin-a{from{transform:translate(-50%,-50%) rotate(-28deg)}to{transform:translate(-50%,-50%) rotate(332deg)}}
+@keyframes solar-spin-b{from{transform:translate(-50%,-50%) rotate(38deg)}to{transform:translate(-50%,-50%) rotate(398deg)}}
+@keyframes solar-spin-c{from{transform:translate(-50%,-50%) rotate(-52deg)}to{transform:translate(-50%,-50%) rotate(308deg)}}
+@keyframes solar-breathe{0%,100%{scale:1;box-shadow:0 0 22px #4be39a45,0 0 55px #4be39a16}50%{scale:1.1;box-shadow:0 0 30px #4be39a70,0 0 72px #4be39a20}}
+@keyframes solar-glint{0%,100%{opacity:.2;transform:translate(-45px,36px) scale(.7)}50%{opacity:1;transform:translate(42px,-35px) scale(1.3)}}
+@media(max-width:900px){#services .solar-art{right:2%;top:52px;width:190px;height:190px;opacity:.48}#services .solar-orbit-c{width:184px;height:126px}#services .solar-orbit-b{width:142px;height:96px}#services .solar-orbit-a{width:90px;height:60px}}
+@media(max-width:520px){#services .solar-art{top:64px;right:-24px;width:150px;height:150px;opacity:.25}#services .solar-orbit-c{width:146px;height:98px}#services .solar-orbit-b{width:112px;height:76px}#services .solar-orbit-a{width:70px;height:48px}#services .solar-core{width:34px;height:34px}}
+@media(prefers-reduced-motion:reduce){#services .solar-orbit-a,#services .solar-orbit-b,#services .solar-orbit-c,#services .solar-core,#services .solar-glint{animation:none!important}}
