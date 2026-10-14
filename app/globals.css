@@ -32,3 +32,19 @@ html{scroll-behavior:smooth}
 .work:hover,.services article:hover,.recommendation:hover{transform:translateY(-4px);border-color:#4be39a55}
 @media(max-width:760px){.hero-art .float-card{min-width:132px;max-width:46%;padding:10px 12px}.hero-art .float-card b{font-size:11px}.hero-art .float-card small{font-size:9px}}
 @media(prefers-reduced-motion:reduce){.hero-art .float-card,.hero-art .orbit-one,.hero-art .orbit-two,.hero-art .orbit-three,.hero-art .monogram{animation:none!important}.work,.services article,.recommendation,.btn,.nav-cta{transition:none!important}}
+
+
+/* Animated expertise chips */
+.skills{gap:9px;margin-top:24px}
+.skills span{position:relative;overflow:hidden;border-radius:999px;padding:10px 13px;background:linear-gradient(135deg,#122019b5,#0b100d);border-color:#8ef4ba30;color:#d3e1d7;animation:skill-enter .55s both;transition:transform .25s ease,border-color .25s ease,background .25s ease,box-shadow .25s ease}
+.skills span:nth-child(6n+1){animation-delay:.04s}
+.skills span:nth-child(6n+2){animation-delay:.09s}
+.skills span:nth-child(6n+3){animation-delay:.14s}
+.skills span:nth-child(6n+4){animation-delay:.19s}
+.skills span:nth-child(6n+5){animation-delay:.24s}
+.skills span:nth-child(6n){animation-delay:.29s}
+.skills span:before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 25%,#8ef4ba13 50%,transparent 75%);transform:translateX(-130%);transition:transform .55s ease}
+.skills span:hover{transform:translateY(-4px);border-color:#8ef4ba9c;background:#14251a;box-shadow:0 8px 24px #4be39a12;color:#8ef4ba}
+.skills span:hover:before{transform:translateX(130%)}
+@keyframes skill-enter{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(prefers-reduced-motion:reduce){.skills span{animation:none!important;transition:none!important}}
