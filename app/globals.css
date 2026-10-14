@@ -174,3 +174,5 @@ html{scroll-behavior:smooth}
 .work:hover .art:after{border-color:#8ef4ba55}
 @media(max-width:520px){.art{height:205px}.art-visual{scale:.88}.art-label{font-size:8px}}
 @media(prefers-reduced-motion:reduce){.art:before,.art:after,.art-visual,.art-visual>b,.art-orbit,.art-spark{animation:none!important}}
+
+.contact-cta{display:flex;align-items:center;min-height:110px}.contact-cta h2{max-width:900px}.contact-cta .email{display:inline-block;margin:0 0 0 8px;padding:0 0 3px;border-bottom:1px solid #4be39a;font-size:inherit;line-height:inherit}.contact-cta .email:hover{opacity:.8}
