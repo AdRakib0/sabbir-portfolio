@@ -61,3 +61,18 @@ html{scroll-behavior:smooth}
 @keyframes skill-card-enter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:520px){.skills.skill-cards{grid-template-columns:1fr}.skills.skill-cards .skill-card{min-height:86px}}
 @media(prefers-reduced-motion:reduce){.skills.skill-cards .skill-card{animation:none!important;transition:none!important}}
+
+
+/* Expertise cards in the What I Bring section */
+.expertise-services{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.expertise-services .expertise-card{position:relative;min-height:128px;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:22px;padding:21px 20px;border:1px solid var(--line);border-radius:13px;background:linear-gradient(145deg,#121a14e8,#090e0b);overflow:hidden;animation:expertise-reveal .55s both;transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease,background .28s ease}
+.expertise-services .expertise-card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 100% 0%,#4be39a12,transparent 55%);opacity:.7;pointer-events:none}
+.expertise-services .expertise-card small{position:relative;font:10px monospace;letter-spacing:.1em;color:#8ef4ba}
+.expertise-services .expertise-card h3{position:relative;font:600 15px/1.45 Manrope,sans-serif;margin:0;padding-right:18px;color:#e8f0ea}
+.expertise-services .expertise-card>span{position:absolute;right:17px;bottom:18px;color:#8ef4ba;font-size:15px;opacity:.65;transition:transform .25s ease,opacity .25s ease}
+.expertise-services .expertise-card:hover{transform:translateY(-5px);border-color:#8ef4ba80;box-shadow:0 12px 28px #4be39a10;background:linear-gradient(145deg,#17271c,#0b100d)}
+.expertise-services .expertise-card:hover>span{transform:translate(3px,-3px);opacity:1}
+@keyframes expertise-reveal{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:900px){.expertise-services{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.expertise-services{grid-template-columns:1fr}.expertise-services .expertise-card{min-height:100px}}
+@media(prefers-reduced-motion:reduce){.expertise-services .expertise-card{animation:none!important;transition:none!important}}
