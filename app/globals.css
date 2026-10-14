@@ -10,3 +10,25 @@
 @media(max-width:900px){.links{gap:12px}.links a{font-size:10px}.hero{grid-template-columns:1fr 1fr}.hero h1{font-size:clamp(48px,6vw,68px)}.float-card{min-width:140px;padding:12px}.card-strategy{left:-5%}.card-tech{right:-2%}}
 @media(max-width:760px){.nav{gap:12px}.links{order:initial;width:auto;padding:0;justify-content:flex-start;flex:1;flex-wrap:wrap}.hero{grid-template-columns:1fr;padding:55px 0 65px;gap:10px}.hero-art{height:370px;width:100%;max-width:520px}.hero h1{font-size:clamp(54px,10vw,76px)}.scroll-note{bottom:15px}.card-strategy{left:0}.card-tech{right:0}.card-learning{left:2%}.recommendation-grid{grid-template-columns:1fr}.footer{align-items:flex-start;flex-wrap:wrap}.footer-socials{order:4;width:100%}}
 @media(max-width:520px){.brand{width:42px;height:42px}.brand-copy b{font-size:9px}.brand-copy small{font-size:8px}.nav{justify-content:space-between}.links{order:3;width:100%;flex-basis:100%;justify-content:space-between}.links a{font-size:10px}.hero h1{font-size:clamp(46px,12vw,62px)}.hero-art{height:320px}.monogram{width:140px;height:140px;font-size:48px}.float-card{min-width:128px;padding:10px;font-size:10px}.float-card small{font-size:9px}.card-strategy{top:9%;left:0}.card-tech{top:40%;right:0}.card-learning{bottom:8%;left:0}.art-note{font-size:7px}.about h2,.section-heading h2,.contact h2{font-size:34px}.recommendation{padding:20px}.recommendation-person{align-items:flex-start}.recommendation-check{display:none}.education-line{gap:15px}.form{padding:16px}}
+
+
+/* Fix hero-card text positioning and add subtle motion */
+.hero-art .float-card{position:absolute;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:6px;min-height:60px;line-height:1.35;animation:card-drift 5.5s ease-in-out infinite;will-change:transform}
+.hero-art .float-card b{position:static;display:block;font:700 12px 'DM Sans',sans-serif;letter-spacing:0;color:var(--text);line-height:1.35}
+.hero-art .float-card small{position:static;display:block;left:auto;right:auto;top:auto;bottom:auto;color:var(--muted);font:10px 'DM Sans',sans-serif;letter-spacing:.03em;line-height:1.45;white-space:normal}
+.hero-art .card-strategy{animation-delay:-1.2s}
+.hero-art .card-tech{animation-delay:-2.8s}
+.hero-art .card-learning{animation-delay:-4.1s}
+.hero-art .orbit-one{animation:orbit-turn 36s linear infinite}
+.hero-art .orbit-two{animation:orbit-turn 48s linear infinite reverse}
+.hero-art .orbit-three{animation:orbit-pulse 4.5s ease-in-out infinite}
+.hero-art .monogram{animation:monogram-glow 4s ease-in-out infinite}
+@keyframes card-drift{0%,100%{translate:0 0}50%{translate:0 -8px}}
+@keyframes orbit-turn{from{rotate:0deg}to{rotate:360deg}}
+@keyframes orbit-pulse{0%,100%{scale:1;opacity:.8}50%{scale:1.035;opacity:1}}
+@keyframes monogram-glow{0%,100%{box-shadow:0 0 38px #4be39a0b}50%{box-shadow:0 0 70px #4be39a20}}
+html{scroll-behavior:smooth}
+.btn,.nav-cta,.work,.services article,.recommendation{transition:transform .28s ease,border-color .28s ease,background-color .28s ease}
+.work:hover,.services article:hover,.recommendation:hover{transform:translateY(-4px);border-color:#4be39a55}
+@media(max-width:760px){.hero-art .float-card{min-width:132px;max-width:46%;padding:10px 12px}.hero-art .float-card b{font-size:11px}.hero-art .float-card small{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.hero-art .float-card,.hero-art .orbit-one,.hero-art .orbit-two,.hero-art .orbit-three,.hero-art .monogram{animation:none!important}.work,.services article,.recommendation,.btn,.nav-cta{transition:none!important}}
