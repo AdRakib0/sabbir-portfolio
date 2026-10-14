@@ -48,3 +48,16 @@ html{scroll-behavior:smooth}
 .skills span:hover:before{transform:translateX(130%)}
 @keyframes skill-enter{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
 @media(prefers-reduced-motion:reduce){.skills span{animation:none!important;transition:none!important}}
+
+
+/* Skills shown as individual expertise cards, matching the services section */
+.skills.skill-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:24px}
+.skills.skill-cards .skill-card{min-width:0;min-height:100px;position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:17px;padding:17px 16px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(145deg,#121a14e8,#0b100d);animation:skill-card-enter .55s both;transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease,background .28s ease}
+.skills.skill-cards .skill-card small{font:10px monospace;letter-spacing:.09em;color:#8ef4ba}
+.skills.skill-cards .skill-card b{font:600 13px/1.45 Manrope,sans-serif;color:#e7efe9;padding-right:14px}
+.skills.skill-cards .skill-card>span{position:absolute;right:14px;bottom:14px;color:#8ef4ba;font-size:15px;opacity:.65;transition:transform .25s ease,opacity .25s ease}
+.skills.skill-cards .skill-card:hover{transform:translateY(-5px);border-color:#8ef4ba80;box-shadow:0 12px 28px #4be39a10;background:linear-gradient(145deg,#17271c,#0b100d)}
+.skills.skill-cards .skill-card:hover>span{transform:translate(3px,-3px);opacity:1}
+@keyframes skill-card-enter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:520px){.skills.skill-cards{grid-template-columns:1fr}.skills.skill-cards .skill-card{min-height:86px}}
+@media(prefers-reduced-motion:reduce){.skills.skill-cards .skill-card{animation:none!important;transition:none!important}}
