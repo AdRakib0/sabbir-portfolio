@@ -29,8 +29,8 @@ export default function BlogPage() {
 
     <section className="blog-hero">
       <div className="kicker">WRITING / NOTES / RESOURCES</div>
-      <h1>Ideas, insights &amp; <span className="green">perspectives.</span></h1>
-      <p>Thoughts and practical resources on education, student recruitment, marketing and career pathways.</p>
+      <h1>Education, recruitment &amp; <span className="green">career pathways.</span></h1>
+      <p>Practical insights on education marketing, international student recruitment, education agent partnerships, Australian trade qualifications and career pathways.</p>
       <div className="blog-controls">
         <label className="blog-search"><span aria-hidden="true">⌕</span><input aria-label="Search articles" value={query} onChange={event => updateQuery(event.target.value)} placeholder="Search articles..." /></label>
         <label className="blog-category"><span className="sr-only">Filter by category</span><select value={category} onChange={event => updateCategory(event.target.value)}>{categories.map(item => <option key={item}>{item}</option>)}</select></label>
