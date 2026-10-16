@@ -12,8 +12,55 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: Props): Metadata {
   const post = blogPosts.find(item => item.slug === params.slug);
-  if (!post) return { title: "Article not found | Sabbir" };
-  return { title: `${post.title} | Md Rakibul Islam Sabbir`, description: post.excerpt };
+  if (!post) return { title: "Article not found", robots: { index: false, follow: true } };
+  const keywordsByCategory: Record<string, string[]> = {
+    "Career Pathways": [
+      "Australian trade career pathways",
+      "Australian trade qualifications",
+      "TRA Job Ready Program",
+      "Job Ready Program requirements",
+      "ANZSCO occupation codes",
+      "Provisional Skills Assessment",
+      "Australian VET qualifications",
+      "trade skills assessment Australia",
+    ],
+    "Education Marketing": [
+      "education marketing",
+      "international student recruitment",
+      "education agent partnerships",
+      "student recruitment campaigns",
+    ],
+    "Student Visas": [
+      "Australian student visa information",
+      "international student guidance",
+      "Australian migration information",
+    ],
+  };
+  const keywords = [
+    post.title,
+    post.category,
+    "Md Rakibul Islam Sabbir",
+    ...(keywordsByCategory[post.category] ?? []),
+  ];
+  return {
+    title: post.title,
+    description: post.excerpt,
+    keywords,
+    alternates: { canonical: `/blog/${post.slug}` },
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.excerpt,
+      publishedTime: new Date(post.publishedAt).toISOString(),
+      authors: [post.author],
+      url: `/blog/${post.slug}`,
+    },
+    twitter: {
+      card: "summary",
+      title: post.title,
+      description: post.excerpt,
+    },
+  };
 }
 
 export default function BlogArticlePage({ params }: Props) {
