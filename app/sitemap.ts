@@ -39,5 +39,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     uniquePages.set(page.url, page);
   }
 
-  return [...uniquePages.values()];
+  return Array.from(uniquePages.values());
 }
