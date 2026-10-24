@@ -69,5 +69,47 @@
       "title": "Student recruitment & admissions",
       "description": "Lead follow-up, student counselling, admissions coordination and support throughout the enrolment journey."
     }
+  ],
+  "skillDetails": [
+    {
+      "name": "Student Recruitment",
+      "desc": "150+ enrolments in six months through campaigns, agent engagement and lead follow-up."
+    },
+    {
+      "name": "Agent Partnerships",
+      "desc": "30+ agencies managed, 21 personally signed or reactivated."
+    },
+    {
+      "name": "Admissions",
+      "desc": "End-to-end admissions and CoE processing."
+    },
+    {
+      "name": "Education Marketing",
+      "desc": "Campaigns, HTML email, course brochures and presentation slides."
+    },
+    {
+      "name": "Business Development",
+      "desc": "Market and competitor analysis to support course positioning."
+    },
+    {
+      "name": "Lead Generation",
+      "desc": "Lead follow-up that turns enquiries into enrolments."
+    },
+    {
+      "name": "Student Counselling",
+      "desc": "100+ prospective students converted to enrolment through counselling."
+    },
+    {
+      "name": "Team Leadership",
+      "desc": "Led an 8–9 person recruitment team in Bangladesh."
+    },
+    {
+      "name": "Event Representation",
+      "desc": "Representing the colleges at student, community and agency events."
+    },
+    {
+      "name": "CRM & Reporting",
+      "desc": "Records kept in AgentCis CRM and Microsoft SharePoint."
+    }
   ]
 }

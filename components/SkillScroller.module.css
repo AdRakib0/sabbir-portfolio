@@ -1,0 +1,15 @@
+.wrap{display:grid;gap:18px;margin-top:30px}
+.panel{position:relative;height:440px;border:1px solid var(--line);border-radius:18px;overflow:hidden;perspective:900px;background:radial-gradient(ellipse at 20% 50%,#12301f,#060907 70%)}
+.panel:before,.panel:after{content:"";position:absolute;left:0;right:0;height:90px;z-index:2;pointer-events:none}
+.panel:before{top:0;background:linear-gradient(#060907,transparent)}
+.panel:after{bottom:0;background:linear-gradient(transparent,#060907)}
+.track{position:absolute;left:0;right:0;top:50%;height:0}
+.word{position:absolute;left:0;right:0;top:-32px;height:64px;display:flex;align-items:center;gap:14px;padding-left:7%;font:800 clamp(28px,4.2vw,50px) Manrope,sans-serif;letter-spacing:-.05em;white-space:nowrap;color:#edf4ee;transition:transform .85s cubic-bezier(.65,0,.35,1),filter .85s ease,opacity .85s ease;will-change:transform,filter,opacity}
+.arrow{display:inline-flex;width:38px;justify-content:center;color:var(--green);transition:opacity .5s ease}
+.caption{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px;border-top:1px solid var(--line);padding-top:16px;min-height:52px}
+.caption small{font:10px monospace;letter-spacing:.12em;color:#8ef4ba}
+.caption p{margin:0;font-size:14px;line-height:1.7;color:var(--muted)}
+.caption b{color:var(--text)}
+.srList{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media(max-width:520px){.panel{height:360px}.word{padding-left:5%}}
+@media(prefers-reduced-motion:reduce){.word,.arrow{transition:none}}
