@@ -44,7 +44,7 @@
       }
     ],
     "cta": {
-      "label": "Let’s connect ↗",
+      "label": "Let’s connect ",
       "href": "#contact"
     }
   },
@@ -60,11 +60,11 @@
     },
     "intro": "I build meaningful connections between education providers, education agents and students through education marketing, international student recruitment, partner development and practical campaign execution.",
     "primaryCta": {
-      "label": "Explore my work ↗",
+      "label": "Explore my work ",
       "href": "#work"
     },
     "secondaryCta": {
-      "label": "Let’s connect →",
+      "label": "Let’s connect ",
       "href": "#contact"
     },
     "initials": "RS",
