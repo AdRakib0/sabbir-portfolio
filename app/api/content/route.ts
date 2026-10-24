@@ -1,10 +1,32 @@
-import {NextRequest,NextResponse} from "next/server";
-import {readFile} from "node:fs/promises";
-import path from "node:path";
-export const runtime="nodejs";
-const repo=process.env.GITHUB_REPOSITORY||"AdRakib0/sabbir-portfolio";
-const branch=process.env.GITHUB_BRANCH||"main";
-const filePath="content/site.json";
-async function github(pathname:string,init?:RequestInit){const token=process.env.GITHUB_TOKEN;if(!token)throw new Error("GitHub publishing is not configured. Add GITHUB_TOKEN in Vercel.");const r=await fetch("https://api.github.com"+pathname,{...init,headers:{"Authorization":"Bearer "+token,"Accept":"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28","Content-Type":"application/json",...(init?.headers||{})},cache:"no-store"});const data=await r.json();if(!r.ok)throw new Error(data.message||"GitHub API request failed.");return data;}
-export async function GET(){try{const d=await github("/repos/"+repo+"/contents/"+filePath+"?ref="+branch);return NextResponse.json(JSON.parse(Buffer.from(d.content.replace(/\\n/g,""),"base64").toString("utf8")));}catch(e){try{const content=await readFile(path.join(process.cwd(),filePath),"utf8");return NextResponse.json(JSON.parse(content));}catch{return NextResponse.json({error:e instanceof Error?e.message:"Could not load content."},{status:500});}}}
-export async function PUT(req:NextRequest){const expected=process.env.ADMIN_TOKEN;if(!expected)return NextResponse.json({error:"Admin publishing is not configured. Add ADMIN_TOKEN in Vercel."},{status:503});const supplied=req.headers.get("x-admin-token")||"";if(supplied.length<24||supplied!==expected)return NextResponse.json({error:"Invalid admin token."},{status:401});try{const value=await req.json();if(!value||typeof value!=="object"||typeof value.name!=="string"||!Array.isArray(value.projects)||!Array.isArray(value.experience))return NextResponse.json({error:"Invalid content JSON."},{status:400});const content=JSON.stringify(value,null,2);let sha:string|undefined;try{const existing=await github("/repos/"+repo+"/contents/"+filePath+"?ref="+branch);sha=existing.sha;}catch{}await github("/repos/"+repo+"/contents/"+filePath,{method:"PUT",body:JSON.stringify({message:"Update portfolio content",content:Buffer.from(content).toString("base64"),branch,...(sha?{sha}:{})})});return NextResponse.json({ok:true,message:"Saved to GitHub. Vercel will redeploy from the connected repository."});}catch(e){return NextResponse.json({error:e instanceof Error?e.message:"Publish failed."},{status:500});}}
+import { NextRequest, NextResponse } from "next/server";
+import siteJson from "../../../content/site.json";
+import blogJson from "../../../content/blog.json";
+import { requireAdmin } from "../../../lib/server/auth";
+import { BLOG_PATH, SITE_PATH, errorMessage, gitBlobSha, readRepoFile } from "../../../lib/server/github";
+
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
+// Loads the latest content from GitHub (falling back to the deployed files) for the admin editor.
+// Publishing happens through /api/publish.
+export async function GET(req: NextRequest) {
+  const denied = requireAdmin(req);
+  if (denied) return denied;
+  let warning = "";
+  async function load(file: string, deployed: unknown) {
+    try {
+      const remote = await readRepoFile(file);
+      if (remote) return remote;
+    } catch (e) {
+      warning = "Could not reach GitHub (" + errorMessage(e, "unknown error") + "). Showing the deployed copy.";
+    }
+    const text = JSON.stringify(deployed, null, 2) + "\n";
+    return { text, sha: gitBlobSha(text) };
+  }
+  try {
+    const [site, blog] = await Promise.all([load(SITE_PATH, siteJson), load(BLOG_PATH, blogJson)]);
+    return NextResponse.json({ site: JSON.parse(site.text), blog: JSON.parse(blog.text), siteSha: site.sha, blogSha: blog.sha, warning });
+  } catch (e) {
+    return NextResponse.json({ error: errorMessage(e, "Could not load content.") }, { status: 500 });
+  }
+}

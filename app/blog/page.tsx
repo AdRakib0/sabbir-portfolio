@@ -3,6 +3,10 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { blogPosts } from "../../content/blog";
+import siteJson from "../../content/site.json";
+import type { SiteContent } from "../../lib/content";
+
+const site = siteJson as SiteContent;
 
 const PAGE_SIZE = 9;
 
@@ -22,7 +26,7 @@ export default function BlogPage() {
 
   return <main className="wrap blog-shell">
     <header className="nav">
-      <Link className="brand-lockup" href="/"><span className="brand">S<span>.</span></span><span className="brand-copy"><b>RAKIBUL ISLAM SABBIR</b><small>MARKETING · TECHNOLOGY · GROWTH</small></span></Link>
+      <Link className="brand-lockup" href="/"><span className="brand">{site.brand.mark}<span>.</span></span><span className="brand-copy"><b>{site.brand.title}</b><small>{site.brand.tagline}</small></span></Link>
       <nav className="links" aria-label="Main navigation"><Link href="/">Home</Link><Link href="/#about">About</Link><Link href="/#experience">Experience</Link><Link href="/#work">Projects</Link><Link href="/blog" aria-current="page" className="active">Blog</Link><Link href="/#contact">Contact</Link></nav>
       <Link className="nav-cta" href="/#contact">Let’s connect ↗</Link>
     </header>
@@ -46,6 +50,6 @@ export default function BlogPage() {
     </section> : <div className="blog-empty"><h2>No articles found</h2><p>Try another search term or choose a different category.</p><button className="btn" onClick={() => { updateQuery(""); updateCategory("All topics"); }}>Clear filters</button></div>}
 
     {pageCount > 1 && <nav className="blog-pagination" aria-label="Blog pages"><button className="btn" disabled={page === 1} onClick={() => { setPage(page - 1); window.scrollTo({ top: 0, behavior: "smooth" }); }}>← Previous</button><span>PAGE {page} OF {pageCount}</span><button className="btn" disabled={page === pageCount} onClick={() => { setPage(page + 1); window.scrollTo({ top: 0, behavior: "smooth" }); }}>Next →</button></nav>}
-    <footer className="footer blog-footer"><Link className="brand" href="/">S<span>.</span></Link><span>© {new Date().getFullYear()} Md Rakibul Islam Sabbir</span><div className="footer-socials"><a href="https://www.linkedin.com/in/islamsabbir/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://www.facebook.com/md.rakibul.islam.sabbir.2025" target="_blank" rel="noreferrer">Facebook ↗</a></div><Link href="/">Back to portfolio ↑</Link></footer>
+    <footer className="footer blog-footer"><Link className="brand" href="/">{site.brand.mark}<span>.</span></Link><span>© {new Date().getFullYear()}{" "+site.footer.copyrightName}</span><div className="footer-socials">{site.socials.map(s => <a key={s.label + s.url} href={s.url} target="_blank" rel="noreferrer">{`${s.label} ↗`}</a>)}</div><Link href="/">Back to portfolio ↑</Link></footer>
   </main>;
 }

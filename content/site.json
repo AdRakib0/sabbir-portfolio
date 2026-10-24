@@ -1,19 +1,155 @@
 {
   "name": "Md Rakibul Islam Sabbir",
   "headline": "Education marketing, partnerships & international student recruitment",
-  "intro": "I build meaningful connections between education providers, education agents and students through education marketing, international student recruitment, partner development and practical campaign execution.",
-  "about": "I’m a Sydney-based education marketing professional working across international education, with experience in student recruitment, education agent partnerships, admissions operations and campaign development. I also create practical resources on Australian trade qualifications, career pathways and skills-assessment information for students and education partners.",
   "email": "adrakib0@gmail.com",
   "location": "Sydney, NSW, Australia",
-  "skills": [
-    "Higher Education Recruitment",
-    "Business Development",
-    "Partner Relationship Management",
-    "Marketing Strategy",
-    "Sales & Lead Generation",
-    "Student Recruiting",
-    "Admissions",
-    "Education Marketing"
+  "brand": {
+    "mark": "S",
+    "title": "RAKIBUL ISLAM SABBIR",
+    "tagline": "MARKETING · TECHNOLOGY · GROWTH"
+  },
+  "nav": {
+    "links": [
+      {
+        "label": "About",
+        "href": "#about"
+      },
+      {
+        "label": "Experience",
+        "href": "#experience"
+      },
+      {
+        "label": "Skills",
+        "href": "#skills"
+      },
+      {
+        "label": "Projects",
+        "href": "#work"
+      },
+      {
+        "label": "Services",
+        "href": "#services"
+      },
+      {
+        "label": "Recommendations",
+        "href": "#recommendations"
+      },
+      {
+        "label": "Blog",
+        "href": "/blog"
+      },
+      {
+        "label": "Contact",
+        "href": "#contact"
+      }
+    ],
+    "cta": {
+      "label": "Let’s connect ↗",
+      "href": "#contact"
+    }
+  },
+  "hero": {
+    "greeting": "Hi, I’m",
+    "greetingName": "Sabbir",
+    "greetingEmoji": "👋",
+    "eyebrow": "OPEN TO MEANINGFUL OPPORTUNITIES",
+    "title": {
+      "text": "Building ideas\ninto ",
+      "highlight": "real impact.",
+      "tone": "green"
+    },
+    "intro": "I build meaningful connections between education providers, education agents and students through education marketing, international student recruitment, partner development and practical campaign execution.",
+    "primaryCta": {
+      "label": "Explore my work ↗",
+      "href": "#work"
+    },
+    "secondaryCta": {
+      "label": "Let’s connect →",
+      "href": "#contact"
+    },
+    "initials": "RS",
+    "captionTitle": "Marketing & digital projects",
+    "captionText": "Sydney, Australia · Working across ideas and execution",
+    "monogramCaption": "IDEAS → IMPACT",
+    "artNote": "A LITTLE STRATEGY. A LOT OF CURIOSITY.",
+    "scrollNote": "SCROLL TO EXPLORE ↓"
+  },
+  "stats": [
+    {
+      "icon": "▣",
+      "title": "Strategy first",
+      "caption": "Clear goals, useful work"
+    },
+    {
+      "icon": "⌘",
+      "title": "Tech minded",
+      "caption": "Curious by design"
+    },
+    {
+      "icon": "▥",
+      "title": "Always learning",
+      "caption": "Better, every iteration"
+    }
+  ],
+  "sections": {
+    "about": {
+      "kicker": "01 / ABOUT",
+      "title": {
+        "text": "Connecting education, people and ",
+        "highlight": "opportunity.",
+        "tone": "green"
+      },
+      "subtitle": ""
+    },
+    "experience": {
+      "kicker": "02 / EXPERIENCE",
+      "title": {
+        "text": "Experience with ",
+        "highlight": "purpose.",
+        "tone": "muted"
+      },
+      "subtitle": "Meaningful partnerships, practical marketing and better student journeys."
+    },
+    "work": {
+      "kicker": "03 / SELECTED WORK",
+      "title": {
+        "text": "Ideas made ",
+        "highlight": "tangible.",
+        "tone": "muted"
+      },
+      "subtitle": "A selection of projects across marketing, education and technology."
+    },
+    "services": {
+      "kicker": "04 / WHAT I BRING",
+      "title": {
+        "text": "From first conversation to ",
+        "highlight": "lasting partnership.",
+        "tone": "green"
+      },
+      "subtitle": ""
+    },
+    "recommendations": {
+      "kicker": "05 / RECOMMENDATIONS",
+      "title": {
+        "text": "Kind words from ",
+        "highlight": "colleagues.",
+        "tone": "muted"
+      },
+      "subtitle": "Professional recommendations shared with permission from LinkedIn."
+    },
+    "contact": {
+      "kicker": "06 / CONTACT",
+      "title": {
+        "text": "Have an opportunity in mind? ",
+        "highlight": "Let’s talk ↗",
+        "tone": "green"
+      },
+      "subtitle": ""
+    }
+  },
+  "about": [
+    "I’m a Sydney-based education marketing professional working across international education, with experience in student recruitment, education agent partnerships, admissions operations and campaign development. I also create practical resources on Australian trade qualifications, career pathways and skills-assessment information for students and education partners.",
+    "My work brings together education marketing, agency partnerships, student recruitment, admissions operations and campaign development, supported by an analytical approach from my IT studies."
   ],
   "experience": [
     {
@@ -44,32 +180,17 @@
       ]
     }
   ],
-  "projects": [
-    {
-      "title": "Trade & Career Pathway Guide",
-      "category": "Career pathway resource",
-      "description": "A comprehensive guide connecting Australian trade qualifications with career pathways and related information for student and agent engagement."
-    },
-    {
-      "title": "Education Marketing Collateral",
-      "category": "Campaigns & communications",
-      "description": "Student and agent campaign assets including course brochures, presentation slides, HTML email marketing and partnership communications."
-    }
-  ],
-  "services": [
-    {
-      "title": "Education marketing",
-      "description": "Campaign planning, course positioning and marketing collateral that help education providers communicate their offerings."
-    },
-    {
-      "title": "Agency partnerships",
-      "description": "Agency engagement, relationship development and partner activation across domestic and international markets."
-    },
-    {
-      "title": "Student recruitment & admissions",
-      "description": "Lead follow-up, student counselling, admissions coordination and support throughout the enrolment journey."
-    }
-  ],
+  "education": {
+    "label": "EDUCATION",
+    "items": [
+      {
+        "qualification": "Bachelor of Information Technology and Systems",
+        "institution": "Victorian Institute of Technology",
+        "location": "Sydney",
+        "status": "Expected completion 2027"
+      }
+    ]
+  },
   "skillDetails": [
     {
       "name": "Student Recruitment",
@@ -111,5 +232,88 @@
       "name": "CRM & Reporting",
       "desc": "Records kept in AgentCis CRM and Microsoft SharePoint."
     }
-  ]
+  ],
+  "projects": [
+    {
+      "title": "Trade & Career Pathway Guide",
+      "category": "Career pathway resource",
+      "description": "A comprehensive guide connecting Australian trade qualifications with career pathways and related information for student and agent engagement.",
+      "artLabel": "CAREER PATHWAYS",
+      "symbol": "↗",
+      "tags": [
+        "Strategy",
+        "Content",
+        "Design"
+      ],
+      "linkLabel": "Discuss project",
+      "linkHref": "#contact",
+      "image": ""
+    },
+    {
+      "title": "Education Marketing Collateral",
+      "category": "Campaigns & communications",
+      "description": "Student and agent campaign assets including course brochures, presentation slides, HTML email marketing and partnership communications.",
+      "artLabel": "CAMPAIGN STUDIO",
+      "symbol": "✳",
+      "tags": [
+        "Strategy",
+        "Content",
+        "Design"
+      ],
+      "linkLabel": "Discuss project",
+      "linkHref": "#contact",
+      "image": ""
+    }
+  ],
+  "services": [
+    {
+      "title": "Education marketing",
+      "description": "Campaign planning, course positioning and marketing collateral that help education providers communicate their offerings."
+    },
+    {
+      "title": "Agency partnerships",
+      "description": "Agency engagement, relationship development and partner activation across domestic and international markets."
+    },
+    {
+      "title": "Student recruitment & admissions",
+      "description": "Lead follow-up, student counselling, admissions coordination and support throughout the enrolment journey."
+    }
+  ],
+  "recommendations": [
+    {
+      "name": "Ahad Sarkar",
+      "role": "International Student Recruitment · International Education · Market Development",
+      "date": "7 July 2026",
+      "text": "I have had the opportunity to know Rakibul and have always been impressed by his professionalism, positive attitude, and dedication. He is someone who demonstrates strong communication skills, a willingness to support others, and a genuine commitment to achieving great outcomes.\n\nFrom my interactions with him, I have found him to be reliable, approachable, and highly motivated. His professional approach and respectful nature make him someone I would confidently recommend to others.\n\nI wish him continued success in his future endeavours and believe he will be a valuable addition to any organisation."
+    },
+    {
+      "name": "Sadab Sharif",
+      "role": "Marketing Executive at Australian Polytechnic College",
+      "date": "7 July 2026",
+      "text": "Md Rakibul Islam Sabbir is an exceptionally dedicated and skilled marketing professional. Working with him at Australian Polytechnic, I witnessed firsthand his ability to drive campaigns forward and deliver excellent results. He is strategic, creative, and a great collaborator. I highly recommend him for any future marketing opportunities!"
+    }
+  ],
+  "contact": {
+    "caption": "OPPORTUNITIES START WITH A CONNECTION"
+  },
+  "socials": [
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/islamsabbir/"
+    },
+    {
+      "label": "Facebook",
+      "url": "https://www.facebook.com/md.rakibul.islam.sabbir.2025"
+    }
+  ],
+  "footer": {
+    "copyrightName": "Md Rakibul Islam Sabbir",
+    "backToTop": "Back to top ↑"
+  },
+  "seo": {
+    "title": "Md Rakibul Islam Sabbir | Education Marketing & Student Recruitment",
+    "description": "Explore the portfolio of Md Rakibul Islam Sabbir, an education marketing and international student recruitment professional focused on education partnerships, digital campaigns, Australian trade career pathways and practical resources.",
+    "shareDescription": "Education marketing, international student recruitment, agency partnerships, digital campaigns and Australian trade career pathway resources.",
+    "image": ""
+  }
 }

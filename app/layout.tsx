@@ -1,32 +1,37 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import siteJson from "../content/site.json";
+import type { SiteContent } from "../lib/content";
+
+const { seo, name } = (siteJson as SiteContent);
+const shareDescription = seo.shareDescription || seo.description;
+const images = seo.image ? [{ url: seo.image }] : undefined;
 
 const siteUrl = "https://islamsabbir.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Md Rakibul Islam Sabbir | Education Marketing & Student Recruitment",
-    template: "%s | Md Rakibul Islam Sabbir",
+    default: seo.title,
+    template: `%s | ${name}`,
   },
-  description:
-    "Explore the portfolio of Md Rakibul Islam Sabbir, an education marketing and international student recruitment professional focused on education partnerships, digital campaigns, Australian trade career pathways and practical resources.",
-  applicationName: "Md Rakibul Islam Sabbir Portfolio",
+  description: seo.description,
+  applicationName: `${name} Portfolio`,
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: siteUrl,
-    siteName: "Md Rakibul Islam Sabbir",
-    title: "Md Rakibul Islam Sabbir | Education Marketing & Student Recruitment",
-    description:
-      "Education marketing, international student recruitment, agency partnerships, digital campaigns and Australian trade career pathway resources.",
+    siteName: name,
+    title: seo.title,
+    description: shareDescription,
     locale: "en_AU",
+    images,
   },
   twitter: {
-    card: "summary",
-    title: "Md Rakibul Islam Sabbir | Education Marketing & Student Recruitment",
-    description:
-      "Portfolio and insights on education marketing, international student recruitment and Australian trade career pathways.",
+    card: seo.image ? "summary_large_image" : "summary",
+    title: seo.title,
+    description: shareDescription,
+    images,
   },
   robots: {
     index: true,
