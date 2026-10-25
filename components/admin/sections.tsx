@@ -214,12 +214,30 @@ export function BlogSection() {
 export function ContactSection() {
   return <>
     <Group title="Contact">
-      <Text path={["email"]} label="Email address" required type="email" hint="The “Let’s talk” link opens this address." />
-      <Text path={["contact", "caption"]} label="Animation caption" />
+      <Text path={["email"]} label="Email address" required type="email" hint="Shown large in the contact section, with a copy button. Every contact button opens this address." />
+      <Text path={["contact", "status"]} label="Availability badge" placeholder="Open to meaningful opportunities · Sydney" />
+      <Text path={["contact", "caption"]} label="Closing caption" />
     </Group>
+    <Group title="Scattering headline">
+      <StringList path={["contact", "words"]} label="Label words (up to 6)" itemLabel="Word" hint="Each word becomes one tilted label that scatters away from the cursor." />
+      <Text path={["contact", "accentWord"]} label="Word to highlight in green" />
+      <Text path={["contact", "payoffText"]} label="Line below (plain part)" placeholder="So let’s " />
+      <Text path={["contact", "payoffHighlight"]} label="Line below (green part)" placeholder="make one." />
+    </Group>
+    <Group title="Error window">
+      <Text path={["contact", "errorFile"]} label="Window title" />
+      <Text path={["contact", "errorTitle"]} label="Error heading" />
+      <Text path={["contact", "errorText"]} label="Error message" wide />
+      <Text path={["contact", "errorButton"]} label="Button label" />
+      <Text path={["contact", "errorSubject"]} label="Email subject for the button" />
+    </Group>
+    <ListEditor<{ label: string; subject: string }> path={["contact", "chips"]} label="Reason chips" itemLabel="Chip"
+      hint="Each chip opens an email to you with this subject already filled in."
+      newItem={() => ({ label: "", subject: "" })} title={c => c.label} subtitle={c => c.subject}
+      render={base => <><Text path={[...base, "label"]} label="Label" required /><Text path={[...base, "subject"]} label="Email subject" /></>} />
     <Group title="Section heading">
       <Text path={["sections", "contact", "kicker"]} label="Kicker" />
-      <HeadingFields path={["sections", "contact", "title"]} label="Heading" hint="The highlighted words become the email link." />
+      <HeadingFields path={["sections", "contact", "title"]} label="Old heading (not shown on the page)" hint="The visible headline is now the scattering label words above." />
     </Group>
     <ListEditor<Social> path={["socials"]} label="Social links" itemLabel="Social link"
       newItem={() => ({ label: "", url: "https://" })} title={s => s.label} subtitle={s => s.url}

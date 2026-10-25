@@ -1,0 +1,40 @@
+.section{overflow:hidden}
+.stage{position:relative;height:560px;margin-top:26px;border:1px solid var(--line);border-radius:22px;overflow:hidden;touch-action:pan-y;background-image:linear-gradient(#a5ffc709 1px,transparent 1px),linear-gradient(90deg,#a5ffc709 1px,transparent 1px);background-size:40px 40px}
+.words{margin:0;position:absolute;inset:0}
+.srOnly{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.label{position:absolute;transition:transform .45s cubic-bezier(.2,.8,.2,1.2)}
+.label>span{display:block;padding:.02em .22em .06em;background:#edf4ee;color:#080b09;font:800 clamp(38px,7.4vw,104px)/1 Manrope,sans-serif;letter-spacing:-.04em;text-transform:uppercase;white-space:nowrap;box-shadow:6px 6px 0 #00000073;animation:wob 5s ease-in-out infinite}
+.label>span.accent{background:var(--green)}
+.err{position:absolute;right:28px;top:26px;width:270px;z-index:12;background:#edf4ee;color:#080b09;border:2px solid #080b09;box-shadow:6px 6px 0 var(--green);font:500 12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace}
+.errBar{display:flex;justify-content:space-between;align-items:center;padding:6px 10px;background:var(--green);border-bottom:2px solid #080b09;font-weight:700}
+.errBody{padding:12px;display:flex;flex-direction:column;gap:8px}
+.errBody b{font-size:13px;text-transform:uppercase}
+.progress{height:10px;border:2px solid #080b09;position:relative;overflow:hidden}
+.progress span{position:absolute;inset:0 auto 0 0;background:#080b09;animation:bar 3.5s ease-out infinite}
+.errBody a{align-self:flex-start;margin-top:4px;padding:7px 12px;background:#080b09;color:#edf4ee;font-weight:700;text-decoration:none;border:2px solid #080b09;transition:transform .25s,box-shadow .25s}
+.errBody a:hover{transform:translateY(-2px);box-shadow:4px 4px 0 var(--green);color:#edf4ee}
+.cursorTag{position:absolute;z-index:13;pointer-events:none;transform:translate(18px,18px);background:#080b09;border:1.5px solid var(--green);padding:6px 10px;font:700 11px ui-monospace,SFMono-Regular,Menlo,monospace;color:#8ef4ba;white-space:nowrap;transition:left .22s ease-out,top .22s ease-out,opacity .25s}
+.blink{animation:blink 1s steps(1) infinite}
+.hint{position:absolute;left:24px;bottom:18px;margin:0;font:500 10px ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:#6c7b70}
+.payoff{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;margin-top:30px}
+.payoffText{margin:0;font:800 clamp(44px,6.4vw,92px)/1 Manrope,sans-serif;letter-spacing:-.05em}
+.payoffText span{color:var(--green)}
+.status{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:#b1c9ba}
+.status span{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}
+.reach{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:22px;margin-top:30px;padding-top:28px;border-top:1px solid var(--line)}
+.emailRow{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.email{font:800 clamp(22px,2.4vw,30px) Manrope,sans-serif;letter-spacing:-.04em;color:var(--text);text-decoration:none}
+.email:hover{color:var(--green)}
+.copy,.copied{min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--text);font:600 14px 'DM Sans',sans-serif;cursor:pointer;transition:background-color .25s,color .25s,border-color .25s}
+.copy:hover{border-color:var(--green)}
+.copied{background:var(--green);border-color:var(--green);color:#07120b}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--line);color:var(--text);font-weight:600;font-size:14px;text-decoration:none;transition:border-color .25s,color .25s,transform .25s}
+.chips a:hover{border-color:var(--green);color:var(--green);transform:translateY(-2px)}
+.chips a.social{color:#8ef4ba}
+.caption{margin:34px 0 0;text-align:center;font:9px monospace;letter-spacing:.14em;color:#6c7b70}
+@keyframes wob{0%,100%{translate:0 0}50%{translate:0 -6px}}
+@keyframes bar{0%{width:0}70%,100%{width:78%}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+@media(max-width:700px){.stage{height:560px}.words{inset:0 0 170px 0}.cursorTag{display:none}.err{top:auto;bottom:12px;left:12px;right:12px;width:auto}.hint{display:none}}
+@media(prefers-reduced-motion:reduce){.label,.label>span,.progress span,.blink{animation:none;transition:none}}

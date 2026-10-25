@@ -36,7 +36,8 @@ export type SiteContent = {
   projects: Project[];
   services: Service[];
   recommendations: Recommendation[];
-  contact: { caption: string };
+  contact: { caption: string; words: string[]; accentWord: string; payoffText: string; payoffHighlight: string; status: string;
+    errorFile: string; errorTitle: string; errorText: string; errorButton: string; errorSubject: string; chips: { label: string; subject: string }[] };
   socials: Social[];
   footer: { copyrightName: string; backToTop: string };
   seo: { title: string; description: string; shareDescription: string; image: string };
@@ -82,7 +83,7 @@ const siteSchema: Schema = {
     role: "o", year: "o", tools: "o", audience: "o", challenge: "o", did: "a", results: [{ value: "s", label: "o" }], gallery: [{ src: "s", alt: "o" }], extraLabel: "o", extraHref: "o" }],
   services: [{ title: "s", description: "o" }],
   recommendations: [{ name: "s", role: "o", date: "o", text: "s" }],
-  contact: { caption: "o" },
+  contact: { caption: "o", words: "a", accentWord: "o", payoffText: "o", payoffHighlight: "o", status: "o", errorFile: "o", errorTitle: "o", errorText: "o", errorButton: "o", errorSubject: "o", chips: [{ label: "s", subject: "o" }] },
   socials: [{ label: "s", url: "s" }],
   footer: { copyrightName: "s", backToTop: "o" },
   seo: { title: "s", description: "s", shareDescription: "o", image: "o" },

@@ -357,7 +357,41 @@
     }
   ],
   "contact": {
-    "caption": "OPPORTUNITIES START WITH A CONNECTION"
+    "caption": "OPPORTUNITIES START WITH A CONNECTION",
+    "words": [
+      "You",
+      "can’t",
+      "download",
+      "a",
+      "connection."
+    ],
+    "accentWord": "a",
+    "payoffText": "So let’s ",
+    "payoffHighlight": "make one.",
+    "status": "Open to meaningful opportunities · Sydney",
+    "errorFile": "connection.exe",
+    "errorTitle": "Download failed",
+    "errorText": "Error 404: connections can’t be downloaded.",
+    "errorButton": "Make one instead →",
+    "errorSubject": "Let's make a connection",
+    "chips": [
+      {
+        "label": "Job opportunity",
+        "subject": "Job opportunity"
+      },
+      {
+        "label": "Partnership",
+        "subject": "Partnership enquiry"
+      },
+      {
+        "label": "Agent collaboration",
+        "subject": "Agent collaboration enquiry"
+      },
+      {
+        "label": "Just saying hi",
+        "subject": "Hello from your portfolio"
+      }
+    ]
   },
   "socials": [
     {
