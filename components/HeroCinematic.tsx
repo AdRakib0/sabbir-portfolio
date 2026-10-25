@@ -4,7 +4,7 @@ import styles from "./HeroCinematic.module.css";
 import type { SiteContent } from "../lib/content";
 
 type Props = { hero: SiteContent["hero"]; stats: SiteContent["stats"]; location: string };
-type Card = { kind: "photo"; src: string; alt: string } | { kind: "stat"; icon: string; title: string; caption: string };
+type Card = { kind: "photo"; src: string; alt: string; fit?: string; focus?: string } | { kind: "stat"; icon: string; title: string; caption: string };
 
 const pad = (n: number) => String(n).padStart(2, "0");
 const offset = (i: number, active: number, n: number) => { let d = i - active; if (d < -n / 2) d += n; if (d >= n / 2) d -= n; return d; };
@@ -14,7 +14,7 @@ export default function HeroCinematic({ hero, stats, location }: Props) {
   const photos = (hero.photos ?? []).filter(p => p.src);
   // Use uploaded photos; until there are some, show the highlight cards instead.
   let cards: Card[] = photos.length
-    ? photos.map(p => ({ kind: "photo" as const, src: p.src, alt: p.alt }))
+    ? photos.map(p => ({ kind: "photo" as const, src: p.src, alt: p.alt, fit: p.fit, focus: p.focus }))
     : stats.map(s => ({ kind: "stat" as const, ...s }));
   // The wheel needs at least 5 cards to loop without a visible jump.
   if (cards.length) while (cards.length < 5) cards = cards.concat(cards);
@@ -64,7 +64,9 @@ export default function HeroCinematic({ hero, stats, location }: Props) {
               <figure key={i} className={styles.card} aria-hidden={ad !== 0}
                 style={{ transform: `translate(-50%, -50%) rotate(${d * 17}deg) translateY(-1000px) scale(${ad === 0 ? 1 : 0.88})`, opacity: ad >= 2 ? 0 : ad === 1 ? 0.75 : 1, zIndex: 10 - ad }}>
                 {card.kind === "photo"
-                  ? <img src={card.src} alt={card.alt} loading={i === 0 ? "eager" : "lazy"} />
+                  ? (card.fit === "fit"
+                    ? <><img className={styles.backdrop} src={card.src} alt="" aria-hidden="true" /><img className={styles.whole} src={card.src} alt={card.alt} loading={i === 0 ? "eager" : "lazy"} /></>
+                    : <img src={card.src} alt={card.alt} loading={i === 0 ? "eager" : "lazy"} style={{ objectPosition: ({ top: "50% 15%", bottom: "50% 85%", left: "20% 50%", right: "80% 50%" } as Record<string, string>)[card.focus || ""] || "50% 50%" }} />)
                   : <div className={styles.statCard}><span aria-hidden="true">{card.icon}</span><b>{card.title}</b><small>{card.caption}</small></div>}
                 <figcaption>{pad((i % realCount) + 1)} / {pad(realCount)}</figcaption>
               </figure>

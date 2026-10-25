@@ -6,6 +6,7 @@ import { AboutSection, BlogSection, ContactSection, EducationSection, Experience
 import MediaLibrary from "./MediaLibrary";
 import RawJson, { isStructural } from "./RawJson";
 import styles from "./admin.module.css";
+import { prepareImage } from "../../lib/admin/prepareImage";
 
 const SECTIONS = [
   { id: "profile", label: "Profile & Hero", prefixes: ["name", "headline", "location", "brand", "nav", "hero"], Component: ProfileSection },
@@ -102,7 +103,17 @@ export default function AdminApp() {
 
   const set = useCallback((path: Path, value: unknown) => setDoc(d => (d ? setIn(d, path, value) : d)), []);
 
-  const upload = useCallback(async (file: File): Promise<MediaFile | null> => {
+  const upload = useCallback(async (original: File): Promise<MediaFile | null> => {
+    let file = original;
+    if (/^image\//.test(original.type) || /\.hei[cf]$/i.test(original.name)) {
+      try {
+        if (/\.hei[cf]$/i.test(original.name) || /hei[cf]/i.test(original.type)) setNotice({ kind: "info", text: `Converting ${original.name} to JPG…` });
+        file = await prepareImage(original);
+      } catch {
+        setNotice({ kind: "error", text: `${original.name}: this photo couldn't be converted. Try exporting it as JPG first.` });
+        return null;
+      }
+    }
     const ext = (file.name.split(".").pop() || "").toLowerCase();
     if (!LIMITS[ext]) { setNotice({ kind: "error", text: `${file.name}: only JPG, PNG, WebP and PDF files are allowed.` }); return null; }
     if (file.size > LIMITS[ext] * 1024 * 1024) { setNotice({ kind: "error", text: `${file.name} is larger than ${LIMITS[ext]} MB.` }); return null; }

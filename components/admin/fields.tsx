@@ -200,9 +200,20 @@ export function ImageField({ path, label, hint }: { path: Path; label: string; h
           </select>}
           {value && <button type="button" className="btn" onClick={() => set(path, "")}>Remove</button>}
         </div>
-        <input ref={input} type="file" hidden accept="image/jpeg,image/png,image/webp" onChange={e => pick(e.target.files?.[0])} />
+        <input ref={input} type="file" hidden accept="image/jpeg,image/png,image/webp,image/heic,image/heif,.heic,.heif" onChange={e => pick(e.target.files?.[0])} />
         {error ? <small className={styles.error}>{error}</small> : hint && <small className={styles.hint}>{hint}</small>}
       </div>
     </div>
+  </div>;
+}
+
+export function SelectField({ path, label, options, hint }: { path: Path; label: string; options: [string, string][]; hint?: ReactNode }) {
+  const { doc, set } = useEditor();
+  const id = useId();
+  const value: string = getIn(doc, path) ?? options[0][0];
+  return <div className={styles.field}>
+    <label htmlFor={id}>{label}</label>
+    <select id={id} value={value} onChange={e => set(path, e.target.value)}>{options.map(([v, l]) => <option key={v} value={v}>{l}</option>)}</select>
+    {hint && <small className={styles.hint}>{hint}</small>}
   </div>;
 }

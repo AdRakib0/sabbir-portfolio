@@ -2,7 +2,7 @@
 import { useState } from "react";
 import BlogContent from "../BlogContent";
 import { slugify, type BlogPost, type Education, type Experience, type Project, type Recommendation, type Service, type Skill, type Social, type Stat, type Link } from "../../lib/content";
-import { Group, HeadingFields, ImageField, ListEditor, SectionHeadingFields, StringList, Text, getIn, useEditor, type Path } from "./fields";
+import { Group, HeadingFields, ImageField, ListEditor, SelectField, SectionHeadingFields, StringList, Text, getIn, useEditor, type Path } from "./fields";
 import styles from "./admin.module.css";
 
 export function ProfileSection() {
@@ -49,10 +49,15 @@ export function ProfileSection() {
 }
 
 export function HeroPhotosSection() {
-  return <ListEditor<{ src: string; alt: string }> path={["hero", "photos"]} label="Hero photos" itemLabel="Photo"
-    hint="Portrait photos (about 3:4, e.g. 900 × 1200 px) rotate on the wheel in the hero. Use 5 or more for the smoothest loop. Until you add some, the highlight cards are shown instead."
-    newItem={() => ({ src: "", alt: "" })} title={p => p.alt || "Photo"} subtitle={p => p.src}
-    render={base => <><ImageField path={[...base, "src"]} label="Photo" /><Text path={[...base, "alt"]} label="Description" hint="Describe the photo for screen readers, e.g. Sabbir presenting at a student expo." wide /></>} />;
+  return <ListEditor<{ src: string; alt: string; fit: string; focus: string }> path={["hero", "photos"]} label="Hero photos" itemLabel="Photo"
+    hint="Photos rotate on the wheel in the hero. iPhone photos are fine: they're converted and resized automatically. Portrait photos fill the card best; for landscape or group shots choose “Show whole photo”. Use 5 or more for the smoothest loop."
+    newItem={() => ({ src: "", alt: "", fit: "fill", focus: "center" })} title={p => p.alt || "Photo"} subtitle={p => p.src}
+    render={base => <>
+      <ImageField path={[...base, "src"]} label="Photo" />
+      <SelectField path={[...base, "fit"]} label="How it fits the card" options={[["fill", "Fill the card (may crop edges)"], ["fit", "Show whole photo (no cropping)"]]} />
+      <SelectField path={[...base, "focus"]} label="Keep in view when cropping" options={[["center", "Centre"], ["top", "Top (faces / heads)"], ["bottom", "Bottom"], ["left", "Left"], ["right", "Right"]]} hint="Only used with “Fill the card”." />
+      <Text path={[...base, "alt"]} label="Description" hint="Describe the photo for screen readers, e.g. Sabbir presenting at a student expo." wide />
+    </>} />;
 }
 
 export function StatsSection() {

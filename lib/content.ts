@@ -25,7 +25,7 @@ export type SiteContent = {
     greeting: string; greetingName: string; greetingEmoji: string; eyebrow: string; title: Heading; intro: string;
     primaryCta: Link; secondaryCta: Link; initials: string; captionTitle: string; captionText: string;
     monogramCaption: string; artNote: string; scrollNote: string;
-    words: string[]; photos: { src: string; alt: string }[]; nameSmall: string; nameLarge: string;
+    words: string[]; photos: { src: string; alt: string; fit?: string; focus?: string }[]; nameSmall: string; nameLarge: string;
   };
   stats: Stat[];
   sections: Record<"about" | "experience" | "work" | "services" | "recommendations" | "contact", SectionHeading>;
