@@ -2,8 +2,9 @@
 .viewport::before,.viewport::after{content:"";position:absolute;top:0;bottom:0;width:48px;z-index:2;pointer-events:none}
 .viewport::before{left:0;background:linear-gradient(90deg,var(--bg,#080b09),transparent)}
 .viewport::after{right:0;background:linear-gradient(270deg,var(--bg,#080b09),transparent)}
-.track{display:flex;gap:16px;width:max-content;padding:6px 0 10px;animation:scroll linear infinite;animation-duration:calc(var(--n,4) * 14s);will-change:transform;backface-visibility:hidden;transform:translate3d(0,0,0)}
-.viewport:hover .track,.viewport:focus-within .track,.held .track{animation-play-state:paused}
+.scroller{overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.scroller::-webkit-scrollbar{display:none}
+.track{display:flex;gap:16px;width:max-content;padding:6px 0 10px}
 .card{cursor:pointer;flex:0 0 320px;margin:0;display:flex;flex-direction:column;gap:8px;padding:20px 20px 18px;border:1px solid var(--line);border-radius:16px;background:#0e1410;transition:border-color .3s,transform .3s}
 .card:hover{border-color:#4be39a80;transform:translateY(-3px)}
 .mark{font:800 34px/.6 Manrope,sans-serif;color:var(--green);height:16px;display:block}
@@ -21,8 +22,8 @@
 .close:hover{border-color:var(--green)}
 .full{margin:12px 0 18px}
 .full p{margin:0 0 12px;color:var(--text);font-size:15px;line-height:1.75}
-@keyframes scroll{from{transform:translate3d(0,0,0)}to{transform:translate3d(calc(-50% - 8px),0,0)}}
+
 @keyframes fade{from{opacity:0}to{opacity:1}}
 @keyframes pop{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}
-@media(max-width:640px){.track{animation-duration:calc(var(--n,4) * 20s)}.card{flex-basis:270px;padding:18px}.headline{font-size:16px}.card:hover{transform:none}.viewport::before,.viewport::after{width:24px}}
-@media(prefers-reduced-motion:reduce){.track{animation:none}.viewport{overflow-x:auto}.viewport::before,.viewport::after{display:none}}
+@media(max-width:640px){.card{flex-basis:270px;padding:18px}.headline{font-size:16px}.card:hover{transform:none}.viewport::before,.viewport::after{width:24px}}
+

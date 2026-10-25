@@ -8,9 +8,36 @@ const firstSentence = (t: string) => (t.match(/^[^.!?]+[.!?]/) || [t])[0].trim()
 
 export default function RecommendationsMarquee({ items }: { items: Recommendation[] }) {
   const [open, setOpen] = useState<number | null>(null);
-  const [held, setHeld] = useState(false);
   const closeBtn = useRef<HTMLButtonElement>(null);
   const trigger = useRef<HTMLElement | null>(null);
+  const scroller = useRef<HTMLDivElement>(null);
+  const pauseUntil = useRef(0);
+  const hovering = useRef(false);
+
+  // Auto-scroll by moving the strip's native scroll position (no CSS transform animation),
+  // which iPhone Safari and in-app browsers render reliably. Visitors can also swipe it themselves.
+  useEffect(() => {
+    const el = scroller.current;
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let raf = 0, last = performance.now(), pos = el.scrollLeft;
+    const speed = () => (window.innerWidth < 640 ? 22 : 30); // pixels per second
+    const tick = (now: number) => {
+      const dt = Math.min(now - last, 100) / 1000; last = now;
+      const half = el.scrollWidth / 2;
+      if (hovering.current || now < pauseUntil.current || open !== null) { pos = el.scrollLeft; }
+      else {
+        pos += speed() * dt;
+        if (pos >= half) pos -= half;
+        el.scrollLeft = pos;
+      }
+      if (el.scrollLeft >= half) { el.scrollLeft -= half; pos = el.scrollLeft; }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [open]);
+
+  const hold = () => { pauseUntil.current = performance.now() + 2500; };
 
   useEffect(() => {
     if (open === null) return;
@@ -31,8 +58,12 @@ export default function RecommendationsMarquee({ items }: { items: Recommendatio
 
   return (
     <>
-      <div className={`${styles.viewport} ${held ? styles.held : ""}`} onPointerDown={() => setHeld(true)} onPointerUp={() => setHeld(false)} onPointerCancel={() => setHeld(false)} onPointerLeave={() => setHeld(false)}>
-        <div className={styles.track} style={{ ["--n" as string]: set.length } as React.CSSProperties}>
+      <div className={styles.viewport}>
+        <div ref={scroller} className={styles.scroller}
+          onPointerEnter={e => { if (e.pointerType === "mouse") hovering.current = true; }}
+          onPointerLeave={() => { hovering.current = false; }}
+          onTouchStart={hold} onTouchMove={hold} onWheel={hold} onFocus={hold}>
+        <div className={styles.track}>
           {loop.map((r, k) => {
             const real = k < items.length; // only the first copy is exposed to screen readers and keyboard
             const idx = k % items.length;
@@ -50,6 +81,7 @@ export default function RecommendationsMarquee({ items }: { items: Recommendatio
               </figure>
             );
           })}
+        </div>
         </div>
       </div>
 
