@@ -10,7 +10,7 @@ export type Project = { title: string; category: string; description: string; ar
   role: string; year: string; tools: string; audience: string; challenge: string; did: string[];
   results: { value: string; label: string }[]; gallery: { src: string; alt: string }[]; extraLabel: string; extraHref: string };
 export type Service = { title: string; description: string };
-export type Recommendation = { name: string; role: string; date: string; text: string };
+export type Recommendation = { name: string; role: string; date: string; text: string; headline?: string };
 export type Stat = { icon: string; title: string; caption: string };
 export type Social = { label: string; url: string };
 

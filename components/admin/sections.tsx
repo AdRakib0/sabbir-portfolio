@@ -162,12 +162,13 @@ export function RecommendationsSection() {
   return <>
     <SectionHeadingFields id="recommendations" />
     <ListEditor<Recommendation> path={["recommendations"]} label="Recommendations" itemLabel="Recommendation"
-      newItem={() => ({ name: "", role: "", date: "", text: "" })} title={r => r.name} subtitle={r => r.role}
+      newItem={() => ({ name: "", role: "", date: "", text: "", headline: "" })} title={r => r.name} subtitle={r => r.role}
       render={base => <>
         <Text path={[...base, "name"]} label="Name" required />
         <Text path={[...base, "date"]} label="Date" placeholder="7 July 2026" />
         <Text path={[...base, "role"]} label="Role / title" wide />
-        <Text path={[...base, "text"]} label="Recommendation" required multiline rows={6} hint="Leave a blank line between paragraphs." />
+        <Text path={[...base, "headline"]} label="Pull quote (short headline)" wide hint="A short line copied from the recommendation, shown in bold on the scrolling card. Leave empty to use its first sentence." />
+        <Text path={[...base, "text"]} label="Recommendation" required multiline rows={6} hint="Leave a blank line between paragraphs. The card shows the first few lines; visitors tap “Read full recommendation” for the rest." />
       </>} />
   </>;
 }
