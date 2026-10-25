@@ -38,7 +38,6 @@ export default function ContactConnection({ kicker, contact, email, socials, sta
     try { await navigator.clipboard.writeText(email); } catch { /* clipboard blocked: the email is still visible */ }
     setCopied(true); window.setTimeout(() => setCopied(false), 2000);
   };
-  const linkedIn = socials.find(s => /linkedin/i.test(s.label) || /linkedin\.com/.test(s.url));
 
   return (
     <section id="contact" className={styles.section}>
@@ -87,13 +86,19 @@ export default function ContactConnection({ kicker, contact, email, socials, sta
       </div>
 
       <div className={styles.reach}>
-        <div className={styles.emailRow}>
+        <div className={styles.emailCard}>
+          <small className={styles.fieldLabel}>Email me</small>
           <a className={styles.email} href={`mailto:${email}`}>{email}</a>
-          <button type="button" className={copied ? styles.copied : styles.copy} onClick={copy}>{copied ? "✓ Copied" : "Copy email"}</button>
+          <div className={styles.emailBtns}>
+            <button type="button" className={copied ? styles.copied : styles.copy} onClick={copy}>{copied ? "✓ Copied" : "Copy email"}</button>
+            <a className={styles.send} href={`mailto:${email}`}>Send email {ARROW}</a>
+          </div>
         </div>
-        <div className={styles.chips}>
-          {(contact.chips ?? []).filter(c => c.label).map(c => <a key={c.label} href={mail(c.subject || c.label)}>{c.label}</a>)}
-          {linkedIn && <a className={styles.social} href={linkedIn.url} target="_blank" rel="noreferrer">{linkedIn.label} {ARROW}</a>}
+        <div className={styles.reasons}>
+          <small className={styles.fieldLabel}>Or pick a reason</small>
+          <div className={styles.chips}>
+            {(contact.chips ?? []).filter(c => c.label).map(c => <a key={c.label} href={mail(c.subject || c.label)}><span>{c.label}</span><i aria-hidden="true">→</i></a>)}
+          </div>
         </div>
       </div>
       {contact.caption && <p className={styles.caption}>{contact.caption}</p>}

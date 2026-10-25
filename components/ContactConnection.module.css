@@ -21,17 +21,25 @@
 .payoffText span{color:var(--green)}
 .status{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:#b1c9ba}
 .status span{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}
-.reach{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:22px;margin-top:30px;padding-top:28px;border-top:1px solid var(--line)}
-.emailRow{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
-.email{font:800 clamp(22px,2.4vw,30px) Manrope,sans-serif;letter-spacing:-.04em;color:var(--text);text-decoration:none}
+.reach{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:20px;margin-top:30px;padding-top:28px;border-top:1px solid var(--line)}
+.fieldLabel{display:block;font:700 10px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.emailCard,.reasons{border:1px solid var(--line);border-radius:16px;padding:22px;background:#0d120f}
+.email{display:block;font:800 clamp(22px,2.4vw,30px) Manrope,sans-serif;letter-spacing:-.04em;color:var(--text);text-decoration:none;overflow-wrap:anywhere}
 .email:hover{color:var(--green)}
-.copy,.copied{min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--text);font:600 14px 'DM Sans',sans-serif;cursor:pointer;transition:background-color .25s,color .25s,border-color .25s}
+.emailBtns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.copy,.copied,.send{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 14px;border-radius:10px;font:700 14px 'DM Sans',sans-serif;cursor:pointer;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s,transform .25s}
+.copy{border:1px solid var(--line);background:transparent;color:var(--text)}
 .copy:hover{border-color:var(--green)}
-.copied{background:var(--green);border-color:var(--green);color:#07120b}
-.chips{display:flex;flex-wrap:wrap;gap:10px}
-.chips a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--line);color:var(--text);font-weight:600;font-size:14px;text-decoration:none;transition:border-color .25s,color .25s,transform .25s}
-.chips a:hover{border-color:var(--green);color:var(--green);transform:translateY(-2px)}
-.chips a.social{color:#8ef4ba}
+.copied{border:1px solid var(--green);background:var(--green);color:#07120b}
+.send{border:1px solid var(--green);background:var(--green);color:#07120b}
+.send:hover{transform:translateY(-2px);color:#07120b}
+.chips{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.chips a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:52px;padding:0 16px;border-radius:10px;border:1px solid var(--line);background:#080b09;color:var(--text);font-weight:600;font-size:14px;line-height:1.3;text-decoration:none;transition:border-color .25s,color .25s,transform .25s}
+.chips a i{font-style:normal;color:var(--green);transition:transform .25s}
+.chips a:hover{border-color:var(--green);color:var(--green)}
+.chips a:hover i{transform:translateX(4px)}
+@media(max-width:860px){.reach{grid-template-columns:1fr}}
+@media(max-width:420px){.emailCard,.reasons{padding:18px}.chips a{padding:0 12px;font-size:13px}}
 .caption{margin:34px 0 0;text-align:center;font:9px monospace;letter-spacing:.14em;color:#6c7b70}
 @keyframes wob{0%,100%{translate:0 0}50%{translate:0 -6px}}
 @keyframes bar{0%{width:0}70%,100%{width:78%}}
