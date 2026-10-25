@@ -24,16 +24,15 @@ export default function RecommendationsMarquee({ items }: { items: Recommendatio
 
   if (!items.length) return null;
   // Repeat the set so the strip is always wider than the screen, then double it for a seamless loop.
-  const reps = Math.max(1, Math.ceil(6 / items.length));
+  const reps = Math.max(1, Math.ceil(4 / items.length));
   const set = Array.from({ length: reps }, () => items).flat();
   const loop = [...set, ...set];
-  const duration = `${set.length * 9}s`;
   const cur = open !== null ? items[open] : null;
 
   return (
     <>
       <div className={`${styles.viewport} ${held ? styles.held : ""}`} onPointerDown={() => setHeld(true)} onPointerUp={() => setHeld(false)} onPointerCancel={() => setHeld(false)} onPointerLeave={() => setHeld(false)}>
-        <div className={styles.track} style={{ animationDuration: duration }}>
+        <div className={styles.track} style={{ ["--n" as string]: set.length } as React.CSSProperties}>
           {loop.map((r, k) => {
             const real = k < items.length; // only the first copy is exposed to screen readers and keyboard
             const idx = k % items.length;
