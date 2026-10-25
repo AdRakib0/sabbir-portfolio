@@ -23,7 +23,7 @@ export default function RecommendationsMarquee({ items }: { items: Recommendatio
     const speed = () => (window.innerWidth < 640 ? 22 : 30); // pixels per second
     const tick = (now: number) => {
       const dt = Math.min(now - last, 100) / 1000; last = now;
-      const half = el.scrollWidth / 2;
+      const half = el.scrollWidth / 2 + 8; // one full set of cards, including the 16px gap between the two copies
       if (hovering.current || now < pauseUntil.current || open !== null) { pos = el.scrollLeft; }
       else {
         pos += speed() * dt;
