@@ -81,8 +81,14 @@
     ],
     "photos": [
       {
-        "src": "/uploads/1792892344161-img-7899.jpg",
+        "src": "/uploads/1792892590923-img-7899.jpg",
         "alt": "",
+        "fit": "fit",
+        "focus": "center"
+      },
+      {
+        "src": "/uploads/1792892608658-img-3791.jpg",
+        "alt": "Love The Nature ",
         "fit": "fit",
         "focus": "center"
       }
