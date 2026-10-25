@@ -256,7 +256,21 @@
       ],
       "linkLabel": "Discuss project",
       "linkHref": "#contact",
-      "image": ""
+      "image": "",
+      "role": "",
+      "year": "",
+      "tools": "",
+      "audience": "Students & education agents",
+      "challenge": "",
+      "did": [
+        "Mapped selected Australian trade qualifications to career pathways",
+        "Added occupation references, further-study options and skills-assessment information",
+        "Covered the Job Ready Program pathway"
+      ],
+      "results": [],
+      "gallery": [],
+      "extraLabel": "Read the guide",
+      "extraHref": "/blog/australian-trade-career-pathway-guide-2026"
     },
     {
       "title": "Education Marketing Collateral",
@@ -271,7 +285,22 @@
       ],
       "linkLabel": "Discuss project",
       "linkHref": "#contact",
-      "image": ""
+      "image": "",
+      "role": "",
+      "year": "",
+      "tools": "",
+      "audience": "Students & education agents",
+      "challenge": "",
+      "did": [
+        "Course brochures",
+        "Presentation slides",
+        "HTML email marketing",
+        "Partnership communications"
+      ],
+      "results": [],
+      "gallery": [],
+      "extraLabel": "",
+      "extraHref": ""
     }
   ],
   "services": [

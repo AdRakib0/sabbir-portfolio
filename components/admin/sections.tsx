@@ -115,14 +115,29 @@ export function ProjectsSection() {
   return <>
     <SectionHeadingFields id="work" />
     <ListEditor<Project> path={["projects"]} label="Projects" itemLabel="Project"
-      newItem={() => ({ title: "", category: "", description: "", artLabel: "", symbol: "↗", tags: [], linkLabel: "Discuss project", linkHref: "#contact", image: "" })}
+      newItem={() => ({ title: "", category: "", description: "", artLabel: "", symbol: "↗", tags: [], linkLabel: "Discuss project", linkHref: "#contact", image: "", role: "", year: "", tools: "", audience: "", challenge: "", did: [], results: [], gallery: [], extraLabel: "", extraHref: "" })}
       title={p => p.title} subtitle={p => p.category}
       render={base => <>
         <Text path={[...base, "title"]} label="Title" required />
         <Text path={[...base, "category"]} label="Category" />
         <Text path={[...base, "description"]} label="Description" multiline />
-        <ImageField path={[...base, "image"]} label="Cover image (optional)" hint="Shown behind the card artwork. Leave empty to keep the default artwork only." />
+        <ImageField path={[...base, "image"]} label="Cover image" hint="Shown on the deck card and at the top of the case study. Portrait-friendly images work best on the card. Leave empty to use the default artwork." />
         <Text path={[...base, "artLabel"]} label="Artwork label" />
+        <Text path={[...base, "role"]} label="Case study: my role" placeholder="e.g. Researcher & writer" />
+        <Text path={[...base, "year"]} label="Case study: year" />
+        <Text path={[...base, "tools"]} label="Case study: tools" placeholder="e.g. Canva, Mailchimp" />
+        <Text path={[...base, "audience"]} label="Case study: audience" />
+        <Text path={[...base, "challenge"]} label="Case study: the challenge" multiline rows={4} hint="What problem was this solving? Leave empty to hide this part." />
+        <StringList path={[...base, "did"]} label="Case study: what I did" itemLabel="Point" multiline />
+        <ListEditor<{ value: string; label: string }> path={[...base, "results"]} label="Case study: results" itemLabel="Result"
+          hint="Big numbers, e.g. 30+ / agencies reached. Leave empty to hide the Results box."
+          newItem={() => ({ value: "", label: "" })} title={r => r.value} subtitle={r => r.label}
+          render={rb => <><Text path={[...rb, "value"]} label="Number" required placeholder="30+" /><Text path={[...rb, "label"]} label="What it measures" /></>} />
+        <ListEditor<{ src: string; alt: string }> path={[...base, "gallery"]} label="Case study: gallery" itemLabel="Image"
+          newItem={() => ({ src: "", alt: "" })} title={g => g.alt || "Image"} subtitle={g => g.src}
+          render={gb => <><ImageField path={[...gb, "src"]} label="Image" /><Text path={[...gb, "alt"]} label="Description" wide /></>} />
+        <Text path={[...base, "extraLabel"]} label="Extra button label (optional)" placeholder="Read the guide" />
+        <Text path={[...base, "extraHref"]} label="Extra button link (optional)" placeholder="/blog/…" />
         <Text path={[...base, "symbol"]} label="Artwork symbol" />
         <StringList path={[...base, "tags"]} label="Tags" itemLabel="Tag" />
         <Text path={[...base, "linkLabel"]} label="Link label" />

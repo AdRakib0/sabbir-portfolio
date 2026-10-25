@@ -6,7 +6,9 @@ export type SectionHeading = { kicker: string; title: Heading; subtitle: string 
 export type Experience = { role: string; company: string; period: string; category: string; description: string; bullets: string[] };
 export type Education = { qualification: string; institution: string; location: string; status: string };
 export type Skill = { name: string; desc: string };
-export type Project = { title: string; category: string; description: string; artLabel: string; symbol: string; tags: string[]; linkLabel: string; linkHref: string; image: string };
+export type Project = { title: string; category: string; description: string; artLabel: string; symbol: string; tags: string[]; linkLabel: string; linkHref: string; image: string;
+  role: string; year: string; tools: string; audience: string; challenge: string; did: string[];
+  results: { value: string; label: string }[]; gallery: { src: string; alt: string }[]; extraLabel: string; extraHref: string };
 export type Service = { title: string; description: string };
 export type Recommendation = { name: string; role: string; date: string; text: string };
 export type Stat = { icon: string; title: string; caption: string };
@@ -76,7 +78,8 @@ const siteSchema: Schema = {
   experience: [{ role: "s", company: "s", period: "s", category: "o", description: "o", bullets: "a" }],
   education: { label: "o", items: [{ qualification: "s", institution: "s", location: "o", status: "o" }] },
   skillDetails: [{ name: "s", desc: "o" }],
-  projects: [{ title: "s", category: "o", description: "o", artLabel: "o", symbol: "o", tags: "a", linkLabel: "o", linkHref: "o", image: "o" }],
+  projects: [{ title: "s", category: "o", description: "o", artLabel: "o", symbol: "o", tags: "a", linkLabel: "o", linkHref: "o", image: "o",
+    role: "o", year: "o", tools: "o", audience: "o", challenge: "o", did: "a", results: [{ value: "s", label: "o" }], gallery: [{ src: "s", alt: "o" }], extraLabel: "o", extraHref: "o" }],
   services: [{ title: "s", description: "o" }],
   recommendations: [{ name: "s", role: "o", date: "o", text: "s" }],
   contact: { caption: "o" },
