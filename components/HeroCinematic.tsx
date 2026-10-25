@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import styles from "./HeroCinematic.module.css";
 import type { SiteContent } from "../lib/content";
+import { sym } from "./SiteText";
 
 type Props = { hero: SiteContent["hero"]; stats: SiteContent["stats"]; location: string };
 type Card = { kind: "photo"; src: string; alt: string; fit?: string; focus?: string } | { kind: "stat"; icon: string; title: string; caption: string };
@@ -67,7 +68,7 @@ export default function HeroCinematic({ hero, stats, location }: Props) {
                   ? (card.fit === "fit"
                     ? <><img className={styles.backdrop} src={card.src} alt="" aria-hidden="true" /><img className={styles.whole} src={card.src} alt={card.alt} loading={i === 0 ? "eager" : "lazy"} /></>
                     : <img src={card.src} alt={card.alt} loading={i === 0 ? "eager" : "lazy"} style={{ objectPosition: ({ top: "50% 15%", bottom: "50% 85%", left: "20% 50%", right: "80% 50%" } as Record<string, string>)[card.focus || ""] || "50% 50%" }} />)
-                  : <div className={styles.statCard}><span aria-hidden="true">{card.icon}</span><b>{card.title}</b><small>{card.caption}</small></div>}
+                  : <div className={styles.statCard}><span aria-hidden="true">{sym(card.icon)}</span><b>{card.title}</b><small>{card.caption}</small></div>}
                 <figcaption>{pad((i % realCount) + 1)} / {pad(realCount)}</figcaption>
               </figure>
             );
@@ -87,8 +88,8 @@ export default function HeroCinematic({ hero, stats, location }: Props) {
         <div className={styles.right}>
           <p>{hero.intro}</p>
           <div className={styles.actions}>
-            <a className="btn primary" href={hero.primaryCta.href}>{hero.primaryCta.label}</a>
-            <a className="btn" href={hero.secondaryCta.href}>{hero.secondaryCta.label}</a>
+            <a className="btn primary" href={hero.primaryCta.href}>{sym(hero.primaryCta.label)}</a>
+            <a className="btn" href={hero.secondaryCta.href}>{sym(hero.secondaryCta.label)}</a>
           </div>
         </div>
       </div>

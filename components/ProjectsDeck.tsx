@@ -2,6 +2,7 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import styles from "./ProjectsDeck.module.css";
 import type { Project } from "../lib/content";
+import { ARROW, sym } from "./SiteText";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 const SLOTS = [
@@ -15,7 +16,7 @@ function Cover({ p, large }: { p: Project; large?: boolean }) {
   if (p.image) return <img className={styles.coverImg} src={p.image} alt="" loading="lazy" />;
   return (
     <span className={styles.coverArt} aria-hidden="true">
-      <span className={large ? styles.symbolLg : styles.symbol}>{p.symbol || "↗"}</span>
+      <span className={large ? styles.symbolLg : styles.symbol}>{sym(p.symbol || "↗")}</span>
       {p.artLabel && <small>{p.artLabel}</small>}
     </span>
   );
@@ -146,7 +147,7 @@ export default function ProjectsDeck({ projects, heading, subtitle, kicker }: { 
               {cur.gallery?.length > 0 && <div><h4>Gallery</h4><div className={styles.gallery}>{cur.gallery.map((g, k) => <img key={k} src={g.src} alt={g.alt} loading="lazy" />)}</div></div>}
               <div className={styles.actions}>
                 {cur.linkHref && <a className="btn primary" href={cur.linkHref} onClick={() => setOpen(null)}>{cur.linkLabel || "Discuss project"}</a>}
-                {cur.extraHref && <a className="btn" href={cur.extraHref}>{cur.extraLabel || "Learn more"} ↗</a>}
+                {cur.extraHref && <a className="btn" href={cur.extraHref}>{cur.extraLabel || "Learn more"} {ARROW}</a>}
               </div>
             </div>
           </div>

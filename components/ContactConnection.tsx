@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./ContactConnection.module.css";
 import type { SiteContent } from "../lib/content";
+import { ARROW } from "./SiteText";
 
 type Props = { kicker: string; contact: SiteContent["contact"]; email: string; socials: SiteContent["socials"]; status: string };
 
@@ -92,7 +93,7 @@ export default function ContactConnection({ kicker, contact, email, socials, sta
         </div>
         <div className={styles.chips}>
           {(contact.chips ?? []).filter(c => c.label).map(c => <a key={c.label} href={mail(c.subject || c.label)}>{c.label}</a>)}
-          {linkedIn && <a className={styles.social} href={linkedIn.url} target="_blank" rel="noreferrer">{linkedIn.label} ↗</a>}
+          {linkedIn && <a className={styles.social} href={linkedIn.url} target="_blank" rel="noreferrer">{linkedIn.label} {ARROW}</a>}
         </div>
       </div>
       {contact.caption && <p className={styles.caption}>{contact.caption}</p>}

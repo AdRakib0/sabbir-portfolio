@@ -36,5 +36,5 @@
 @keyframes wob{0%,100%{translate:0 0}50%{translate:0 -6px}}
 @keyframes bar{0%{width:0}70%,100%{width:78%}}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
-@media(max-width:700px){.stage{height:560px}.words{inset:0 0 170px 0}.cursorTag{display:none}.err{top:auto;bottom:12px;left:12px;right:12px;width:auto}.hint{display:none}}
+@media(max-width:700px){.stage{height:auto}.words{position:relative;inset:auto;height:390px}.cursorTag{display:none}.err{position:relative;top:auto;right:auto;width:auto;margin:0 22px 26px 16px}.hint{display:none}}
 @media(prefers-reduced-motion:reduce){.label,.label>span,.progress span,.blink{animation:none;transition:none}}

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { blogPosts } from "../../../content/blog";
 import siteJson from "../../../content/site.json";
+import { ARROW } from "../../../components/SiteText";
 import type { SiteContent } from "../../../lib/content";
 
 const site = siteJson as SiteContent;
@@ -76,7 +77,7 @@ export default function BlogArticlePage({ params }: Props) {
     <header className="nav">
       <Link className="brand-lockup" href="/"><span className="brand">{site.brand.mark}<span>.</span></span><span className="brand-copy"><b>{site.brand.title}</b><small>{site.brand.tagline}</small></span></Link>
       <nav className="links" aria-label="Main navigation"><Link href="/">Home</Link><Link href="/#about">About</Link><Link href="/#experience">Experience</Link><Link href="/#work">Projects</Link><Link href="/blog" className="active">Blog</Link><Link href="/#contact">Contact</Link></nav>
-      <Link className="nav-cta" href="/#contact">Let’s connect ↗</Link>
+      <Link className="nav-cta" href="/#contact">Let’s connect {ARROW}</Link>
     </header>
     <article className="blog-article">
       <Link href="/blog" className="blog-back">← Back to all articles</Link>
@@ -88,8 +89,8 @@ export default function BlogArticlePage({ params }: Props) {
       </header>
       <div className="blog-article-rule"/>
       <BlogContent content={post.content} />
-      <div className="blog-article-end"><span>END OF ARTICLE</span><Link href="/blog">Explore more articles ↗</Link></div>
+      <div className="blog-article-end"><span>END OF ARTICLE</span><Link href="/blog">Explore more articles {ARROW}</Link></div>
     </article>
-    <footer className="footer blog-footer"><Link className="brand" href="/">{site.brand.mark}<span>.</span></Link><span>© {new Date().getFullYear()}{" "+site.footer.copyrightName}</span><div className="footer-socials">{site.socials.map(s => <a key={s.label + s.url} href={s.url} target="_blank" rel="noreferrer">{`${s.label} ↗`}</a>)}</div><Link href="/">Back to portfolio ↑</Link></footer>
+    <footer className="footer blog-footer"><Link className="brand" href="/">{site.brand.mark}<span>.</span></Link><span>© {new Date().getFullYear()}{" "+site.footer.copyrightName}</span><div className="footer-socials">{site.socials.map(s => <a key={s.label + s.url} href={s.url} target="_blank" rel="noreferrer">{`${s.label} ${ARROW}`}</a>)}</div><Link href="/">Back to portfolio ↑</Link></footer>
   </main>;
 }
