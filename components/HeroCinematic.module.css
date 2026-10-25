@@ -2,7 +2,8 @@
 .glow{position:absolute;left:50%;top:60px;width:820px;height:820px;margin-left:-410px;border-radius:50%;background:radial-gradient(circle,#4be39a33 0%,#4be39a0f 42%,transparent 70%);pointer-events:none;animation:glow 6s ease-in-out infinite}
 .meta{position:relative;z-index:4;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font:600 11px 'DM Sans',sans-serif;letter-spacing:.17em;color:var(--muted);text-transform:uppercase}
 .words{position:relative;z-index:1;height:clamp(84px,17vw,270px);margin-top:28px}
-.word{position:absolute;left:0;right:0;top:0;text-align:center;font-family:'Anton',Impact,sans-serif;font-size:clamp(64px,19vw,300px);line-height:.85;letter-spacing:-.01em;color:var(--text);white-space:nowrap;transition:transform 1s cubic-bezier(.65,0,.35,1),opacity .8s ease,filter .8s ease}
+.word{position:absolute;left:0;right:0;top:0;display:flex;justify-content:center;text-align:center;font-family:'Anton',Impact,sans-serif;font-size:clamp(64px,19vw,300px);line-height:.85;letter-spacing:-.01em;color:var(--text);white-space:nowrap;transition:transform 1s cubic-bezier(.65,0,.35,1),opacity .8s ease,filter .8s ease}
+.wordInner{display:inline-block;transform-origin:50% 0;transition:transform .3s ease}
 .srOnly{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);margin:0}
 .wheel{position:relative;z-index:2;height:560px;margin:clamp(-200px,-12vw,-60px) auto 0;width:min(900px,100%)}
 .pivot{position:absolute;left:50%;top:calc(50% + 1000px);width:0;height:0}

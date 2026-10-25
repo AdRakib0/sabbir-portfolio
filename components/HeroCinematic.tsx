@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./HeroCinematic.module.css";
 import type { SiteContent } from "../lib/content";
 import { sym } from "./SiteText";
@@ -12,6 +12,24 @@ const offset = (i: number, active: number, n: number) => { let d = i - active; i
 
 export default function HeroCinematic({ hero, stats, location }: Props) {
   const words = (hero.words ?? []).filter(Boolean);
+  const wordsBox = useRef<HTMLDivElement>(null);
+  const wordRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const [fit, setFit] = useState<number[]>([]);
+
+  // Shrink any giant word that is wider than the hero (e.g. PARTNERSHIP) so it is never cut off.
+  useEffect(() => {
+    const box = wordsBox.current;
+    if (!box) return;
+    const measure = () => {
+      const avail = box.clientWidth * 0.98;
+      setFit(wordRefs.current.map(el => (el && el.offsetWidth > avail ? avail / el.offsetWidth : 1)));
+    };
+    measure();
+    document.fonts?.ready.then(measure);
+    const ro = new ResizeObserver(measure);
+    ro.observe(box);
+    return () => ro.disconnect();
+  }, [words.join("|")]);
   const photos = (hero.photos ?? []).filter(p => p.src);
   // Use uploaded photos; until there are some, show the highlight cards instead.
   let cards: Card[] = photos.length
@@ -47,11 +65,11 @@ export default function HeroCinematic({ hero, stats, location }: Props) {
       <div className={`wrap ${styles.meta}`}><span>{hero.eyebrow}</span><span>{location}</span></div>
 
       {words.length > 0 && (
-        <div className={styles.words}>
+        <div ref={wordsBox} className={styles.words}>
           <h2 className={styles.srOnly}>{words.join(", ")}</h2>
           {words.map((t, i) => {
             const d = offset(i, wa, words.length);
-            return <span key={t + i} aria-hidden="true" className={styles.word} style={{ transform: `translateY(${d * 45}%)`, opacity: d === 0 ? 1 : 0, filter: `blur(${d === 0 ? 0 : 12}px)` }}>{t}</span>;
+            return <span key={t + i} aria-hidden="true" className={styles.word} style={{ transform: `translateY(${d * 45}%)`, opacity: d === 0 ? 1 : 0, filter: `blur(${d === 0 ? 0 : 12}px)` }}><span ref={el => { wordRefs.current[i] = el; }} className={styles.wordInner} style={{ transform: `scale(${fit[i] ?? 1})` }}>{t}</span></span>;
           })}
         </div>
       )}
