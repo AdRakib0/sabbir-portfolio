@@ -23,6 +23,7 @@ export type SiteContent = {
     greeting: string; greetingName: string; greetingEmoji: string; eyebrow: string; title: Heading; intro: string;
     primaryCta: Link; secondaryCta: Link; initials: string; captionTitle: string; captionText: string;
     monogramCaption: string; artNote: string; scrollNote: string;
+    words: string[]; photos: { src: string; alt: string }[]; nameSmall: string; nameLarge: string;
   };
   stats: Stat[];
   sections: Record<"about" | "experience" | "work" | "services" | "recommendations" | "contact", SectionHeading>;
@@ -67,6 +68,7 @@ const siteSchema: Schema = {
     greeting: "o", greetingName: "o", greetingEmoji: "o", eyebrow: "o", title: { text: "s", highlight: "o", tone: "s" }, intro: "s",
     primaryCta: link, secondaryCta: link, initials: "s", captionTitle: "o", captionText: "o",
     monogramCaption: "o", artNote: "o", scrollNote: "o",
+    words: "a", photos: [{ src: "s", alt: "o" }], nameSmall: "o", nameLarge: "o",
   },
   stats: [{ icon: "o", title: "s", caption: "o" }],
   sections: { about: section, experience: section, work: section, services: section, recommendations: section, contact: section },

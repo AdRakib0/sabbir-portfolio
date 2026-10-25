@@ -41,13 +41,23 @@ export function ProfileSection() {
       <Text path={["hero", "captionText"]} label="Caption text" />
       <Text path={["hero", "artNote"]} label="Artwork note" />
       <Text path={["hero", "scrollNote"]} label="Scroll prompt" />
+      <Text path={["hero", "nameSmall"]} label="Name line (small)" placeholder="Md Rakibul Islam" />
+      <Text path={["hero", "nameLarge"]} label="Name line (large italic)" placeholder="Sabbir" />
+      <StringList path={["hero", "words"]} label="Rotating giant words" itemLabel="Word" hint="Shown one at a time behind the photo wheel. Short words work best." />
     </Group>
   </>;
 }
 
+export function HeroPhotosSection() {
+  return <ListEditor<{ src: string; alt: string }> path={["hero", "photos"]} label="Hero photos" itemLabel="Photo"
+    hint="Portrait photos (about 3:4, e.g. 900 × 1200 px) rotate on the wheel in the hero. Use 5 or more for the smoothest loop. Until you add some, the highlight cards are shown instead."
+    newItem={() => ({ src: "", alt: "" })} title={p => p.alt || "Photo"} subtitle={p => p.src}
+    render={base => <><ImageField path={[...base, "src"]} label="Photo" /><Text path={[...base, "alt"]} label="Description" hint="Describe the photo for screen readers, e.g. Sabbir presenting at a student expo." wide /></>} />;
+}
+
 export function StatsSection() {
   return <ListEditor<Stat> path={["stats"]} label="Highlight cards" itemLabel="Card"
-    hint="The floating cards beside the hero monogram. The layout is designed for three."
+    hint="Highlight cards. They appear on the hero photo wheel until you add hero photos."
     newItem={() => ({ icon: "◆", title: "", caption: "" })} title={s => s.title} subtitle={s => s.caption}
     render={base => <><Text path={[...base, "icon"]} label="Icon" /><Text path={[...base, "title"]} label="Title" required /><Text path={[...base, "caption"]} label="Caption" wide /></>} />;
 }

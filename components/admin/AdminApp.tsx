@@ -2,13 +2,14 @@
 import { useCallback, useEffect, useMemo, useState, type FormEvent } from "react";
 import { validateBlog, validateSite } from "../../lib/content";
 import { Editor, setIn, type Doc, type MediaFile, type Path } from "./fields";
-import { AboutSection, BlogSection, ContactSection, EducationSection, ExperienceSection, ProfileSection, ProjectsSection, RecommendationsSection, SeoSection, ServicesSection, SkillsSection, StatsSection } from "./sections";
+import { AboutSection, BlogSection, ContactSection, EducationSection, ExperienceSection, ProfileSection, ProjectsSection, RecommendationsSection, SeoSection, ServicesSection, SkillsSection, StatsSection, HeroPhotosSection } from "./sections";
 import MediaLibrary from "./MediaLibrary";
 import RawJson, { isStructural } from "./RawJson";
 import styles from "./admin.module.css";
 
 const SECTIONS = [
   { id: "profile", label: "Profile & Hero", prefixes: ["name", "headline", "location", "brand", "nav", "hero"], Component: ProfileSection },
+  { id: "heroPhotos", label: "Hero photos", prefixes: ["hero.photos"], Component: HeroPhotosSection },
   { id: "stats", label: "Stats", prefixes: ["stats"], Component: StatsSection },
   { id: "about", label: "About", prefixes: ["sections.about", "about"], Component: AboutSection },
   { id: "experience", label: "Experience", prefixes: ["sections.experience", "experience"], Component: ExperienceSection },
