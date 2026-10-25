@@ -79,7 +79,14 @@
       "PARTNERSHIP",
       "IT"
     ],
-    "photos": [],
+    "photos": [
+      {
+        "src": "/uploads/1792892344161-img-7899.jpg",
+        "alt": "",
+        "fit": "fit",
+        "focus": "center"
+      }
+    ],
     "nameSmall": "Md Rakibul Islam",
     "nameLarge": "Sabbir"
   },
